@@ -117,7 +117,7 @@ class MainFrame6 extends Component{
               </div>
     }
 
-    updateDimensions() {
+    updateDimensions=()=> {
 
     var w = window,
         d = document,
@@ -130,11 +130,11 @@ class MainFrame6 extends Component{
         // if you are using ES2015 I'm pretty sure you can do this: this.setState({width, height});
     }
 
-    componentWillMount() {
+    componentWillMount=() =>{
         this.updateDimensions();
     }
 
-    componentDidMount() {
+    componentDidMount=() =>{
         window.addEventListener("resize", this.updateDimensions);
     }
 
