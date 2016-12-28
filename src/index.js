@@ -17,7 +17,7 @@ class ZC extends Component{
   }
 }
 
-console.log('entr')
+// console.log('entr')
 ReactDOM.render(
 <Provider store={store}>
   <App/>

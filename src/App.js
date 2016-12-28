@@ -97,6 +97,7 @@ class App extends Component {
       {/*}  <DropdownList data={['1','2','3']} />*/}
       xx
       <MainFrame6 />
+          <Slider max={12} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:val})}}/>
         </div>
         )
   }
