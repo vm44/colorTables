@@ -4,7 +4,8 @@ import MainFrame from '../components/MainFrame'
 const mapStateToProps = (state, ownProps) => ({
   dta: state.v,
   height:state.height,
-  width:state.width
+  width:state.width,
+  hTilesCnt:state.hTilesCnt
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

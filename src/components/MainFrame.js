@@ -19,7 +19,11 @@ class ARect extends Component{
 class MainFrame extends Component{
 
     render() {
-      var pw=1,cw=4,ch=4
+      // console.log('MainFrame')
+      // return(<div>SSS</div>)
+
+
+      var pw=1,cw=this.props.hTilesCnt,ch=4
 {/*      var cw=Math.floor(this.state.width/rWidth);
       var ch=Math.floor(this.state.height/rHeight);
       var realWidth=this.state.width/cw-cw*pw;
