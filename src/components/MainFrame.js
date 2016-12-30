@@ -20,7 +20,7 @@ class ARect extends Component{
     // console.log('ARect:',this.props);
     return(
       <div style={{color:'red',
-        backgroundColor:'gray',
+        backgroundColor:'white',
         width:this.props.cellDims.width,
         height:this.props.cellDims.height,
         fontSize:this.props.cellDims.height*0.9,

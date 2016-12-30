@@ -9,7 +9,7 @@ const reCalcCell=function(state){
   var realHeight=this.state.height/ch-ch*pw;*/}
   var cellWidth=state.frameWidth/state.wTilesCnt-state.wTilesCnt*pw;
   var cellHeight=state.frameHeight/state.hTilesCnt-state.hTilesCnt*pw
-  // console.log('reCCell')
+  console.log('reCCell','cellH=',cellHeight)
   return {width:cellWidth,
     height:cellHeight}
 }
@@ -32,9 +32,20 @@ const reducer=function(state=initSt,action){
 
     case 'chSize':
       console.log('ch',action.val)
-      rState={...state,wTilesCnt:action.val}
+      switch (action.val.src) {
+        case 'horz':
+            rState={...state,wTilesCnt:action.val.val}
+          break;
+        case 'vert':
+          rState={...state,hTilesCnt:action.val.val}
+          break;
+        default:
+          rState={...state}
+
+      }
       cellDims=reCalcCell(rState)
       rState.cellDims=cellDims
+      rState.da=Array.from(new Array(rState.wTilesCnt*rState.hTilesCnt),(v,i)=>i)
       return rState
       // return {...state,hTilesCnt:action.val,da:da}
 

@@ -83,6 +83,41 @@ function log(value) {
 }
 //<Slider max={20} onChange={()=>{console.log('change',this.props.value);this.props.dispatch({type:'chSize'})}}/>
 
+
+class LPanel extends Component{
+
+  state={
+    width:"10px"
+  }
+
+  render(){
+    return(
+      <div style={{
+        height: "100%",
+        width: this.state.width,
+        position: "fixed",
+        zIndex: "1",
+        top: "0",
+        left: "0",
+        backgroundColor: "#f1f1f1",
+        overflowX: "hidden",
+        transition: "0.5s",
+        paddingTop: "160px"
+
+      }} onMouseEnter={()=>{this.setState({width:"250px"})}} onMouseLeave={()=>{this.setState({width:"10px"})}}>
+
+      <div style={{width:"80%",margin:"auto"}}>
+        <Slider max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:{src:'horz',val:val}})}}/>
+        <Slider max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:{src:'vert',val:val}})}}/>
+      </div>
+
+      </div>
+    )
+  }
+}
+
+const VLPanel=connect()(LPanel)
+
 class App extends Component {
 
   disp(value){
@@ -95,11 +130,13 @@ class App extends Component {
     return (
       <div className="App">
       {/*}  <DropdownList data={['1','2','3']} />*/}
-      xx
-      <MainFrame6 />
+        <VLPanel/>
+        <MainFrame6 />
+        <div style={{width:400,margin:"auto"}}>
           <Slider max={12} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:val})}}/>
         </div>
-        )
+      </div>
+    )
   }
 }
 
