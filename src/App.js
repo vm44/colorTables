@@ -93,10 +93,10 @@ class LPanel extends Component{
   render(){
     return(
       <div style={{
-        height: "100%",
+        height: "300",
         width: this.state.width,
         position: "fixed",
-        zIndex: "1",
+        zIndex: "0",
         top: "0",
         left: "0",
         backgroundColor: "#f1f1f1",
@@ -104,12 +104,38 @@ class LPanel extends Component{
         transition: "0.5s",
         paddingTop: "160px"
 
-      }} onMouseEnter={()=>{this.setState({width:"250px"})}} onMouseLeave={()=>{this.setState({width:"10px"})}}>
+        }} onMouseEnter={()=>{this.setState({width:"250px"})}} onMouseLeave={()=>{this.setState({width:"10px"})}}>
 
-      <div style={{width:"80%",margin:"auto"}}>
-        <Slider max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:{src:'horz',val:val}})}}/>
-        <Slider max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:{src:'vert',val:val}})}}/>
+        {this.props.children}
+
       </div>
+    )
+  }
+}
+
+class TPanel extends Component{
+
+  state={
+    height:"10px"
+  }
+
+  render(){
+    return(
+      <div style={{
+        height: this.state.height,
+        width: '100%',
+        position: "fixed",
+        zIndex: "0",
+        top: "0",
+        left: "0",
+        backgroundColor: "#41f1f1",
+        overflowX: "hidden",
+        transition: "0.5s",
+        paddingTop: "6px"
+
+      }} onMouseEnter={()=>{this.setState({height:"50px"})}} onMouseLeave={()=>{this.setState({height:"10px"})}}>
+
+        {this.props.children}
 
       </div>
     )
@@ -117,6 +143,7 @@ class LPanel extends Component{
 }
 
 const VLPanel=connect()(LPanel)
+const VTPanel=connect()(TPanel)
 
 class App extends Component {
 
@@ -130,11 +157,25 @@ class App extends Component {
     return (
       <div className="App">
       {/*}  <DropdownList data={['1','2','3']} />*/}
-        <VLPanel/>
+        <VTPanel>
+          Main Menu
+        </VTPanel>
+        <VLPanel>
+          <div style={{width:"80%",margin:"auto",zIndex:"2"}}>
+            Horizontal
+            <Slider max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:{src:'horz',val:val}})}}/>
+            Vertical
+            <Slider max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:{src:'vert',val:val}})}}/>
+            <label>
+              <input
+                type="checkbox"
+              />Lock
+            </label>
+
+          </div>
+        </VLPanel>
+
         <MainFrame6 />
-        <div style={{width:400,margin:"auto"}}>
-          <Slider max={12} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:val})}}/>
-        </div>
       </div>
     )
   }

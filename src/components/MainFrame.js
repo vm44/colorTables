@@ -19,14 +19,14 @@ class ARect extends Component{
   render(){
     // console.log('ARect:',this.props);
     return(
-      <div style={{color:'red',
-        backgroundColor:'white',
+      <div style={{color:0,
+        backgroundColor:"#ffffff",
         width:this.props.cellDims.width,
         height:this.props.cellDims.height,
-        fontSize:this.props.cellDims.height*0.9,
+        fontSize:Math.min(this.props.cellDims.width/1.2,this.props.cellDims.height)*0.9,
         float:'left',
         border:'solid black 1px'}}>
-        {/*}{this.props.width}x{this.props.height}*/this.props.v}S</div>
+        {/*}{this.props.width}x{this.props.height}*/this.props.v}</div>
     )
   }
 }

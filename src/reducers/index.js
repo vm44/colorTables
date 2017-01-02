@@ -14,6 +14,26 @@ const reCalcCell=function(state){
     height:cellHeight}
 }
 
+function shuffle(array) {
+    let counter = array.length;
+
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        let index = Math.floor(Math.random() * counter);
+
+        // Decrease counter by 1
+        counter--;
+
+        // And swap the last element with it
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+
+    return array;
+}
+
 const reducer=function(state=initSt,action){
 
   let rState={}
@@ -45,7 +65,7 @@ const reducer=function(state=initSt,action){
       }
       cellDims=reCalcCell(rState)
       rState.cellDims=cellDims
-      rState.da=Array.from(new Array(rState.wTilesCnt*rState.hTilesCnt),(v,i)=>i)
+      rState.da=shuffle(Array.from(new Array(rState.wTilesCnt*rState.hTilesCnt),(v,i)=>i))
       return rState
       // return {...state,hTilesCnt:action.val,da:da}
 
