@@ -2,25 +2,18 @@ import {connect} from 'react-redux'
 import MainFrame from '../components/MainFrame'
 
 const mapStateToProps = function(state, ownProps) {
-
-  console.log('xxxxx');
+  // console.log('xxxxx');
+  // console.log(state)
   return{
-  dta: state.v,
-  height:state.frameHeight,
-  width:state.frameWidth,
-  hTilesCnt:state.hTilesCnt,
-  da:state.da,
-  cellDims:state.cellDims
+    dta: state.main.v,
+    height:state.main.frameHeight,
+    width:state.main.frameWidth,
+    // hTilesCnt:state.main.hTilesCnt,
+    da:state.main.da,
+    cellDims:state.main.cellDims,
+    color:state.color
+  }
 }
-}
-// const mapStateToProps = (state, ownProps) => ({
-//   dta: state.v,
-//   // height:state.height,
-//   // width:state.width,
-//   // hTilesCnt:state.hTilesCnt,
-//   da:state.da,
-//   cellDims:state.cellDims
-// })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onClick: () => {

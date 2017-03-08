@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import Button from 'react-widgets/lib/Button'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
-import logo from './logo.svg';
 import './App.css';
 
 // import MainFrame6 from './components/MainFrame'
 import MainFrame6 from './containers/VisMainFrame'
-
-var rHeight=100,rWidth=200;
-
-
-
+import PageLayout from './layouts/PageLayout'
+import MainMenu from './components/MainMenu'
 
 class Cl1 extends Component {
   render(){
@@ -21,6 +16,7 @@ class Cl1 extends Component {
     )
   }
 }
+
 
 class Cl2 extends Component {
   render(){
@@ -43,6 +39,7 @@ class Rect extends Component{
     this.setState({color:"red"});
   }
 }
+
 
 class SliderCont extends Component {
   disp(v){
@@ -84,66 +81,6 @@ function log(value) {
 //<Slider max={20} onChange={()=>{console.log('change',this.props.value);this.props.dispatch({type:'chSize'})}}/>
 
 
-class LPanel extends Component{
-
-  state={
-    width:"10px"
-  }
-
-  render(){
-    return(
-      <div style={{
-        height: "300",
-        width: this.state.width,
-        position: "fixed",
-        zIndex: "0",
-        top: "0",
-        left: "0",
-        backgroundColor: "#f1f1f1",
-        overflowX: "hidden",
-        transition: "0.5s",
-        paddingTop: "160px"
-
-        }} onMouseEnter={()=>{this.setState({width:"250px"})}} onMouseLeave={()=>{this.setState({width:"10px"})}}>
-
-        {this.props.children}
-
-      </div>
-    )
-  }
-}
-
-class TPanel extends Component{
-
-  state={
-    height:"10px"
-  }
-
-  render(){
-    return(
-      <div style={{
-        height: this.state.height,
-        width: '100%',
-        position: "fixed",
-        zIndex: "0",
-        top: "0",
-        left: "0",
-        backgroundColor: "#41f1f1",
-        overflowX: "hidden",
-        transition: "0.5s",
-        paddingTop: "6px"
-
-      }} onMouseEnter={()=>{this.setState({height:"50px"})}} onMouseLeave={()=>{this.setState({height:"10px"})}}>
-
-        {this.props.children}
-
-      </div>
-    )
-  }
-}
-
-const VLPanel=connect()(LPanel)
-const VTPanel=connect()(TPanel)
 
 class App extends Component {
 
@@ -157,25 +94,9 @@ class App extends Component {
     return (
       <div className="App">
       {/*}  <DropdownList data={['1','2','3']} />*/}
-        <VTPanel>
-          Main Menu
-        </VTPanel>
-        <VLPanel>
-          <div style={{width:"80%",margin:"auto",zIndex:"2"}}>
-            Horizontal
-            <Slider max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:{src:'horz',val:val}})}}/>
-            Vertical
-            <Slider max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:{src:'vert',val:val}})}}/>
-            <label>
-              <input
-                type="checkbox"
-              />Lock
-            </label>
-
-          </div>
-        </VLPanel>
-
-        <MainFrame6 />
+        <PageLayout topMenu={<MainMenu/>}>
+          <MainFrame6 />
+        </PageLayout>
       </div>
     )
   }

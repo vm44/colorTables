@@ -1,0 +1,4 @@
+ok-apply
+accs on colors
+ColorDialog onCanel restore
+disable main redraw on colors change
