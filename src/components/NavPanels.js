@@ -20,7 +20,7 @@ class LeftPanel extends Component{
         backgroundColor: "#f1f1f1",
         overflowX: "hidden",
         transition: "0.5s",
-        paddingTop: "160px"
+        paddingTop: "16px"
 
       }} onMouseEnter={()=>{this.setState({width:"450px"})}} onMouseLeave={()=>{this.setState({width:"10px"})}}>
 

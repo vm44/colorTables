@@ -9,19 +9,26 @@ import reducer,{colorsInitState} from './reducers'
 import {Provider} from 'react-redux'
 import {Router, Route, hashHistory} from 'react-router'
 
+import WebFont from 'webfontloader'
+
+import FontSample from './components/FontSample'
 import PageLayout from './layouts/PageLayout'
 import MainMenu from './components/MainMenu'
 
 // const store=createStore(reducer,{color:colorsInitState})
 const store=createStore(reducer)
 
-
+ // AIzaSyBZK0tIpg0sOznBoGZmjZaylWqQL9ughRw
 
 class App2 extends Component {
   render() {
     return (
       <PageLayout topMenu={<MainMenu/>}>
         Page 2
+        <FontSample text={"Font Sample"} fontFamily={"Tangerine, sans"} />
+        <FontSample text={"Font Sample"} fontFamily={"Rokkitt, Extra-Bold"} />
+        <FontSample text={"Font Sample"} fontFamily={"Orbitron, Extra-Bold"} />
+        <FontSample text={"Font Sample"} fontFamily={"Play, sans"} />
       </PageLayout>
     );
   }
@@ -30,13 +37,25 @@ class App2 extends Component {
 class App3 extends Component {
   render() {
     return (
+      <div style={{
+          // fontFamily:"Tangerine, sans",
+          // fontSize:"300px",
+          // color:"#05055f",
+          // textShadow:"4px 4px 4px #222222"
+        }}>
       <PageLayout topMenu={<MainMenu/>}>
         Page 3
       </PageLayout>
+    </div>
     );
   }
 }
 
+WebFont.load({
+    google: {
+      families: ['Tangerine','Droid Sans', 'Droid Serif','Play','Rokkitt','Orbitron']
+    }
+  })
 
 // console.log('entr')
 ReactDOM.render(

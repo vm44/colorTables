@@ -1,12 +1,15 @@
 {
   "name": "trans_dim",
   "version": "0.1.0",
+  "homepage": "https://vm44.github.io/colorTables",
   "private": true,
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "react-scripts": "0.8.4"
   },
   "dependencies": {
     "lodash": "^4.17.4",
+    "rc-slider": "^6.1.2",
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.7",
     "react-color": "^2.11.1",
@@ -14,14 +17,18 @@
     "react-redux": "^5.0.1",
     "react-redux-form": "^1.7.0",
     "react-router": "^3.0.0",
+    "react-select": "^1.0.0-rc.3",
     "react-widgets": "^3.4.5",
     "reactcss": "^1.1.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "webfontloader": "^1.6.27"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }

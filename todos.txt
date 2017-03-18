@@ -1,4 +1,28 @@
-ok-apply
+//ok-apply
 accs on colors
 ColorDialog onCanel restore
-disable main redraw on colors change
+//disable main redraw on colors change
+header
+predef colorsets
+refresh
+revert
+colorset: random from selected
+values on sliders
+overlay timer with controls
+//css - without bootstrap
+//addColor : only curr theme
+//font size
+embed in div
+//symbol center
+full theme
+rules for colors gen
+style of SymbolRect
+center all in MainFrame
+global config
+themes ops: remove, cp, doubl
+
+themes
+ shadowy
+ b/w
+
+only strings with letters

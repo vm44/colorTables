@@ -21,3 +21,15 @@ class App extends Component {
 // const VApp=connect()(App);
 
 export default App
+
+// <div style={{width:"100%",
+//   height:"100%",
+//   // position:"fixed",
+//   position:"absolute",
+//   left:"30px",
+//   top:"30px",
+//   opacity:"0.62",
+//   color:"#ff0000",
+//   fontSize:"152px"}}>
+//   sdfsdfd
+// </div>

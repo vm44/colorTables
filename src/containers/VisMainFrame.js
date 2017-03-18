@@ -1,17 +1,21 @@
 import {connect} from 'react-redux'
 import MainFrame from '../components/MainFrame'
 
+import {getCurrentTheme,getCurrentColorTheme} from '../reducers'
+
 const mapStateToProps = function(state, ownProps) {
-  // console.log('xxxxx');
-  // console.log(state)
+  console.log("VisMainFrame:",state)
   return{
-    dta: state.main.v,
-    height:state.main.frameHeight,
-    width:state.main.frameWidth,
-    // hTilesCnt:state.main.hTilesCnt,
-    da:state.main.da,
-    cellDims:state.main.cellDims,
-    color:state.color
+    dta: getCurrentTheme(state).v,
+    height:getCurrentTheme(state).frameHeight,
+    width:getCurrentTheme(state).frameWidth,
+    // hTilesCnt:getCurrentTheme(state).hTilesCnt,
+    da:getCurrentTheme(state).da,
+    cellDims:getCurrentTheme(state).cellDims,
+    font:getCurrentTheme(state).font,
+    fontsSet:getCurrentTheme(state).fontsSet,
+    fontSizeRange:getCurrentTheme(state).fontSizeRange,
+    color:getCurrentColorTheme(state)//state.colorTheme.data["default"]
   }
 }
 

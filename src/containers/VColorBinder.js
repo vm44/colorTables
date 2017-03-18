@@ -1,9 +1,11 @@
 import {connect} from 'react-redux'
 
 import ColorBinder from '../components/ColorBinder'
+import {getCurrentColorTheme} from "../reducers"
 
 const mapStateToProps=function(state){
-  return {colorSetKeys:Object.keys(state.color)}
+  // console.log("VColorBinder",state,Object.keys(getCurrentColorTheme(state)))
+  return {colorSetKeys:Object.keys(getCurrentColorTheme(state))}
 }
 
 const VColorBinder = connect(mapStateToProps)(ColorBinder)

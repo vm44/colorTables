@@ -3,7 +3,9 @@ import React, {Component} from 'react'
 import ARect from './SymbolRect'
 
 class TableFrame extends Component{
-
+    state={
+      rrs:[]
+    }
     render() {
 
       if(this.props.cellDims === undefined)
@@ -12,14 +14,27 @@ class TableFrame extends Component{
       // console.log(this.props.cellDims)
       // console.log(this.props.cellBkgColor)
       // var rrs=this.props.da.map(x=><ARect cellDims={this.props.cellDims} cellBkgColor={this.props.cellBkgColor} v={x}/>)
-      var rrs=this.props.da.map(x=><ARect cellDims={this.props.cellDims} color={this.props.color} v={x}/>)
 
       return <div style={{margin:1,
               width:this.props.width,
               height:this.props.height,
+
+              // fontFamily:this.props.font,
+              // fontSize:"300px",
+              // color:"#05055f",
+              textShadow:"4px 4px 4px #222222",
+
               backgroundColor:'lime'}}>
-              {rrs}
+              { this.props.da.map(x=><ARect cellDims={this.props.cellDims}
+                  fontsSet={this.props.fontsSet}
+                  color={this.props.color}
+                  fontSizeRange={this.props.fontSizeRange}
+                  v={x}/>)})}
             </div>
+    }
+    // var rrs=this.props.da.map(x=><ARect cellDims={this.props.cellDims} color={this.props.color} v={x}/>)
+
+    componentWillUpdate=()=>{
     }
 
     updateDimensions=()=> {
