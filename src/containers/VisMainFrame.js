@@ -4,7 +4,7 @@ import MainFrame from '../components/MainFrame'
 import {getCurrentTheme,getCurrentColorTheme} from '../reducers'
 
 const mapStateToProps = function(state, ownProps) {
-  console.log("VisMainFrame:",state)
+  // console.log("VisMainFrame:",state)
   return{
     dta: getCurrentTheme(state).v,
     height:getCurrentTheme(state).frameHeight,

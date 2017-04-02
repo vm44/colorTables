@@ -23,9 +23,9 @@ class TableFrame extends Component{
               // fontSize:"300px",
               // color:"#05055f",
               textShadow:"4px 4px 4px #222222",
-
               backgroundColor:'lime'}}>
-              { this.props.da.map(x=><ARect cellDims={this.props.cellDims}
+              { this.props.da.map(x=>
+                <ARect cellDims={this.props.cellDims}
                   fontsSet={this.props.fontsSet}
                   color={this.props.color}
                   fontSizeRange={this.props.fontSizeRange}

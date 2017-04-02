@@ -8,7 +8,7 @@ const reduceSelected=function (dict, key, reducer, action){
     else
       newObj[k]=reducer(dict[k],{type:"nop"})
 
-  console.log("reduceSelected, in:",dict,"out:",newObj)
+  // console.log("reduceSelected, in:",dict,"out:",newObj)
 
   return newObj
 }

@@ -1,11 +1,14 @@
 import {combineReducers} from 'redux'
+import {REHYDRATE} from 'redux-persist/constants'
 
 import colorThemeReducer from './Colors'
+import booksReducer from './Books'
 import {reduceSelected, shuffle} from './utils'
 
 // let da=Array.from(new Array(60),(v,i)=>i)
-const initSt={v:15,wTilesCnt:5,hTilesCnt:4,fontSizeRange:[4,100],
-  cellBkgColor:'#fffff0',font:"Arial",
+const initSt={//v:15,
+  wTilesCnt:5,hTilesCnt:4,fontSizeRange:[4,100],
+  // cellBkgColor:'#fffff0',font:"Arial",
   fontsSet:['Roboto','Play'],
   da:shuffle(Array.from(new Array(20),(v,i)=>i)),}
 
@@ -38,6 +41,11 @@ const reducer=function(state=initSt,action){
   let cellDims={}
 
   switch (action.type) {
+
+    case REHYDRATE:
+      console.log("Rehydr",action);
+      return state//action.payload.main
+
 
     case 'chSize':
       // console.log('ch',action.val)
@@ -134,8 +142,10 @@ const getCurrentColorTheme=(state)=>{
 }
 
 export default combineReducers({
-  colorTheme:colorThemeReducer,
-  main: reduceDict})
+  books: booksReducer,
+  colorTheme: colorThemeReducer,
+  main: reduceDict
+})
   // main: mainReducer})
 
 export {getCurrentTheme,getCurrentColorTheme}

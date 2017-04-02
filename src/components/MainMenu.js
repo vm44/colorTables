@@ -8,6 +8,9 @@ export default class NavMenu extends Component{
         <Link to="/">Main</Link>
         <Link to="/2">2</Link>
         <Link to="/3">3</Link>
+        <Link to="/4">4</Link>
+        <Link to="/bookReader">BookReader</Link>
+        <Link to="/drz">Dropzone</Link>
       </div>
     )
   }
