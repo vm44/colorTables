@@ -6,17 +6,20 @@ import booksReducer from './Books'
 import {reduceSelected, shuffle} from './utils'
 
 // let da=Array.from(new Array(60),(v,i)=>i)
-const initSt={//v:15,
-  wTilesCnt:5,hTilesCnt:4,fontSizeRange:[4,100],
-  // cellBkgColor:'#fffff0',font:"Arial",
-  fontsSet:['Roboto','Play'],
-  da:shuffle(Array.from(new Array(20),(v,i)=>i)),}
+const initSt = {  // v:15,
+  wTilesCnt: 5,
+  hTilesCnt: 4,
+  fontSizeRange: [4, 100],
+    // cellBkgColor:'#fffff0',font:"Arial",
+  fontsSet: ['Roboto', 'Play'],
+  da: shuffle(Array.from(new Array(20), (v, i) => i)),
+}
 
-const initMainState={
-  data:{
-    default:initSt
+const initMainState = {
+  data: {
+    default: initSt
   },
-  current:"default"
+  current: 'default'
 }
 
 const reCalcCell = function (state) {
@@ -28,12 +31,10 @@ const reCalcCell = function (state) {
   var cellHeight = state.frameHeight / state.hTilesCnt - state.hTilesCnt * pw
   // console.log('reCCell', 'cellH=', cellHeight)
   return {
-      width: cellWidth,
-      height: cellHeight
-    }
+    width: cellWidth,
+    height: cellHeight
   }
-
-
+}
 
 const reducer=function(state=initSt,action){
 
@@ -107,6 +108,19 @@ const reducer=function(state=initSt,action){
 // }
 
 
+const dictReducer=(state,action,entryReducer)=>{
+  switch(action.type){
+    default:
+      console.log(state)
+      return entryReducer(state.data[state.current],action)
+  }
+}
+
+const mainReducer=(state=initMainState,action)=>{
+  console.log(state)
+  return dictReducer(state,action,reducer)
+}
+
 const reduceDict=function (state=initMainState, action){
   let newState=Object.assign({},state)
   let changed=reducer(state.data[state.current],action)
@@ -116,21 +130,21 @@ const reduceDict=function (state=initMainState, action){
 
 
 //n/u
-const mainReducer=function (state=initMainState, action){
-//  return state
-  return{
-    data:{
-      default:reduceSelected(state.data, "default", reducer, action)
-    },
-    current:"default"
-  }
-  // return{
-  //     data:{
-  //       default:reduceSelected(state, "default", reducer, action)
-  //     },
-  //     current:"default"
-  //   }
-}
+// const mainReducer=function (state=initMainState, action){
+// //  return state
+//   return{
+//     data:{
+//       default:reduceSelected(state.data, "default", reducer, action)
+//     },
+//     current:"default"
+//   }
+//   // return{
+//   //     data:{
+//   //       default:reduceSelected(state, "default", reducer, action)
+//   //     },
+//   //     current:"default"
+//   //   }
+// }
 
 const getCurrentTheme=(state)=>{
   // console.log("gCT",state,state.main.data[state.main.current])

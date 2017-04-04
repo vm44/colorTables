@@ -45,7 +45,7 @@ class SymbolRect extends Component{
   render(){
     // console.log('ARect:',this.props);
     // console.log(this.state)
-    console.log("SymbolRect",this.props.fontsSet)//,sample(this.props.fontsSet))
+    // console.log("SymbolRect",this.props.fontsSet)//,sample(this.props.fontsSet))
     return(
       <div style={{
         paddingTop: "0px",

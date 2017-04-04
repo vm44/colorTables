@@ -16,6 +16,16 @@ const mapStateToProps = function(state, ownProps) {
     fontsSet:getCurrentTheme(state).fontsSet,
     fontSizeRange:getCurrentTheme(state).fontSizeRange,
     color:getCurrentColorTheme(state)//state.colorTheme.data["default"]
+    // dta: getCurrentTheme(state).v,
+    // height:getCurrentTheme(state).frameHeight,
+    // width:getCurrentTheme(state).frameWidth,
+    // // hTilesCnt:getCurrentTheme(state).hTilesCnt,
+    // da:getCurrentTheme(state).da,
+    // cellDims:getCurrentTheme(state).cellDims,
+    // font:getCurrentTheme(state).font,
+    // fontsSet:getCurrentTheme(state).fontsSet,
+    // fontSizeRange:getCurrentTheme(state).fontSizeRange,
+    // color:getCurrentColorTheme(state)//state.colorTheme.data["default"]
   }
 }
 

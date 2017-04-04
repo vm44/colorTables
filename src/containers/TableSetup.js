@@ -16,7 +16,8 @@ import WrappedSelector from '../components/WrappedSelector'
 import FontsList from '../FontsList'
 
 const mapStateToProps=function(state){
-  return {colorThemes:getCurrentTheme(state).colorTheme,
+  // return {colorThemes:getCurrentTheme(state).colorTheme,
+  return {//colorThemes:getCurrentTheme(state).colorTheme,
           ks:Object.keys(state.colorTheme.data),
           selectValue:state.colorTheme.current}
 }

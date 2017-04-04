@@ -74,7 +74,7 @@ class BookView extends Component{
   render(){
     return(
       // <div ref="cont" style={{height:"200px"}}>
-      <div ref="cont" style={{height:"200px"}}>
+      <div ref="cont" style={{height:"90%"}}>
 
       </div>
     )
