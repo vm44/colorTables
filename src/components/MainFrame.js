@@ -7,7 +7,7 @@ class TableFrame extends Component{
       rrs:[]
     }
     render() {
-
+      console.log(this.props.cellDims)
       if(this.props.cellDims === undefined)
         return <div>undef</div>
       // var rrse=this.props.da.map(x=>x)

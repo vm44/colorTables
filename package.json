@@ -8,6 +8,7 @@
     "react-scripts": "0.8.4"
   },
   "dependencies": {
+    "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "rc-slider": "^6.1.2",
     "react": "^15.4.1",
@@ -25,6 +26,7 @@
     "reactcss": "^1.1.1",
     "redux": "^3.6.0",
     "redux-persist": "^4.6.0",
+    "redux-persist-transform-immutable": "^4.2.0",
     "webfontloader": "^1.6.27"
   },
   "scripts": {

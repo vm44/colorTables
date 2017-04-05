@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux'
 import App from './components/TablePage';
 // // import App from './TblFrame';
 // // import App from './App2';
 // import './index.css';
-import reducer from './reducers'
 import {Provider} from 'react-redux'
 import {Router, Route, hashHistory} from 'react-router'
-import {persistStore, autoRehydrate} from 'redux-persist'
 //
 import WebFont from 'webfontloader'
 //
@@ -19,12 +16,7 @@ import MainMenu from './components/MainMenu'
 import VBookReader from './containers/VBookReader'
 import BooksCtrl from './containers/BooksCtrl'
 
-// const store=createStore(reducer,{color:colorsInitState})
-// const store=createStore(reducer,undefined)
-const store=createStore(reducer,undefined,autoRehydrate())
-// // console.log(store)
-persistStore(store)
-
+import {store} from './store'
  // AIzaSyBZK0tIpg0sOznBoGZmjZaylWqQL9ughRw
 
 class App2 extends Component {

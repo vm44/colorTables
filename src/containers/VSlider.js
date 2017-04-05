@@ -5,24 +5,16 @@ import Slider,{Range} from 'rc-slider'
 import 'rc-slider/assets/index.css'
 
 import {getCurrentTheme} from '../reducers'
-
+import {getFromStore} from '../store'
 
 const mapStateToProps = function(state, ownProps) {
-  // console.log('xxxxx');
-  // console.log(ownProps.className)
-  if(ownProps.className=='hz')
-  // if(ownProps.className)
-  return{
-    value: getCurrentTheme(state).wTilesCnt,
-  }
-  return{
-    value: getCurrentTheme(state).hTilesCnt,
-  }
+  let key = (ownProps.className=='hz') ? 'w' : 'h'
+  return {value: getFromStore(state,'main',key+'TilesCnt')}
 }
 
 const mapStateToPropsRange=function(state){
   // console.log("VR",getCurrentTheme(state))
-  return {value:getCurrentTheme(state).fontSizeRange}
+  return {value:getFromStore(state,'main','fontSizeRange')}
 }
 
 const VSlider = connect(mapStateToProps)(Slider)

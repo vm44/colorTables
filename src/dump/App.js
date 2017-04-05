@@ -63,7 +63,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   dispatchA: (dta) => {
     console.log(dta*10)
-    dispatch({type:'chSize',data:dta*10})
+    dispatch({type:'chgTilesNumber',data:dta*10})
   }
 })
 
@@ -78,14 +78,14 @@ const VisSlider = connect(
 function log(value) {
   console.log(value);
 }
-//<Slider max={20} onChange={()=>{console.log('change',this.props.value);this.props.dispatch({type:'chSize'})}}/>
+//<Slider max={20} onChange={()=>{console.log('change',this.props.value);this.props.dispatch({type:'chgTilesNumber'})}}/>
 
 
 
 class App extends Component {
 
   disp(value){
-    // dispatch({type:'chSize'})
+    // dispatch({type:'chgTilesNumber'})
     console.log(value)
   }
 
@@ -122,7 +122,7 @@ export default VApp
 // <SliderCont/>
 //   <VisSlider/>
 //   */}
-//   <Slider max={12} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:val})}}/>
+//   <Slider max={12} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chgTilesNumber',val:val})}}/>
 // </div>
 // <Button label={'dddssedwewdwd'} />
 // </p>

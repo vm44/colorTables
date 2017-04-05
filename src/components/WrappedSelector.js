@@ -3,12 +3,13 @@ import {connect} from 'react-redux'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 
-import {getCurrentTheme} from '../reducers'
+// import {getCurrentTheme} from '../reducers'
+import {getFromStore} from '../store'
 
 const mapStateToProps=function(state){
   return {//colorThemes:state.colorTheme,
           ks:Object.keys(state.colorTheme.data),
-          selectValue:getCurrentTheme(state).fontsSet
+          selectValue:getFromStore(state,'main','fontsSet')
       }
 }
 

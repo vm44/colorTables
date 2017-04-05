@@ -50,9 +50,9 @@ class TableSetup extends Component{
       Font Range
       <VsRange onChange={(val)=>{console.log(val);this.props.dispatch({type:"chFontSizeRange",val:val})}}/>
       Horizontal
-      <VSlider className={'hz'} value={6} max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:{src:'horz',val:val}})}}/>
+      <VSlider className={'hz'} value={6} max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chgTilesNumber',val:{src:'horz',val:val}})}}/>
       Vertical
-      <VSlider max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chSize',val:{src:'vert',val:val}})}}/>
+      <VSlider max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chgTilesNumber',val:{src:'vert',val:val}})}}/>
 
       <VColorBinder />
 {/*}
