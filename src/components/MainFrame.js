@@ -23,13 +23,14 @@ class TableFrame extends Component{
               // fontSize:"300px",
               // color:"#05055f",
               textShadow:"4px 4px 4px #222222",
-              backgroundColor:'lime'}}>
-              { this.props.da.map(x=>
-                <ARect cellDims={this.props.cellDims}
-                  fontsSet={this.props.fontsSet}
-                  color={this.props.color}
-                  fontSizeRange={this.props.fontSizeRange}
-                  v={x}/>)})}
+              backgroundColor:'#220022'}}>
+            {/*}  <div style={{margin:"auto",width:"89vw",height:'40vh',backgroundColor:'#440000'}}>*/}
+                { this.props.da.map(x=>
+                  <ARect cellDims={this.props.cellDims}
+                    fontsSet={this.props.fontsSet}
+                    color={this.props.color}
+                    fontSizeRange={this.props.fontSizeRange}
+                    v={x}/>)})}
             </div>
     }
     // var rrs=this.props.da.map(x=><ARect cellDims={this.props.cellDims} color={this.props.color} v={x}/>)
