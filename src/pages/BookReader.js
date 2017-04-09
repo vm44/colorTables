@@ -8,12 +8,12 @@ import BooksCtrl from '../containers/BooksCtrl'
 class BookReader extends Component{
   render(){
     return(
-      // <PageLayout topMenu={<MainMenu/>} leftPanel={<BooksCtrl/>}>
-      <PageLayout leftPanel={<BooksCtrl/>}>
+      // <PageLayout leftPanel={<BooksCtrl/>}>
+      <PageLayout topMenu={<MainMenu/>} leftPanel={<BooksCtrl/>}>
+        <BookView currentBook={this.props.currentBook}/>
       </PageLayout>
     )
   }
 }
-// <BookView cont={this.props.book} />
 
 export default BookReader

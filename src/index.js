@@ -14,7 +14,7 @@ import FontSample from './components/FontSample'
 import PageLayout from './layouts/PageLayout'
 import MainMenu from './components/MainMenu'
 import VBookReader from './containers/VBookReader'
-import BooksCtrl from './containers/BooksCtrl'
+// import BooksCtrl from './containers/BooksCtrl'
 
 import {store} from './store'
  // AIzaSyBZK0tIpg0sOznBoGZmjZaylWqQL9ughRw
@@ -130,7 +130,7 @@ ReactDOM.render(
       <Route path='/2' component={App2} />
       <Route path='/3' component={App3} />
       <Route path='/4' component={()=>(<App4 st={300}/>)} />
-      <Route path='/bookReader' component={BooksCtrl} />
+      <Route path='/bookReader' component={VBookReader} />
       <Route path='/drz' component={AppDropzone} />
     </Router>
   </Provider>

@@ -26,7 +26,7 @@ class App extends Component {
 const splitStr = (str) => {
   // let str=stri.replace("<emphasis>","<em>")
   let sstr=str.split("</p>")
-  let pstrp=sstr.map(x => x.replace("",""))
+  let pstrp=sstr//.map(x => x.replace("",""))
   // let pstr=pstrp.map(x=>["<br>",x.replace(/emphasis/g,"i")])
   let pstr=pstrp.map(x=>x.replace(/emphasis/g,"i"))
   // let pstr=sstr.map(x=>x.replace("<p>","<p/>"))
