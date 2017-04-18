@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import {connect} from 'react-redux'
 
 const splitStr = (str) => {
   // let str=stri.replace("<emphasis>","<em>")
@@ -14,34 +15,37 @@ const splitStr = (str) => {
 
 class BookView extends Component{
   state={
-    cont:["cont","<p/>","wefer"],
+    cont:["load","<p/>","book"],
     viewPos:0,
   }
 
-  componentWillReceiveProps=(nextProps)=>{
-    console.log("Props received, ",
-    this.props.currentBook != undefined ? this.props.currentBook.name : 'None',this.state.viewPos,
-    nextProps.currentBook.name)
-
+  loadBook=(file)=>{
     let myProm=new Promise((resolve,reject)=>{
 
       var reader = new FileReader();
-
       reader.onload = function(e){
         // var text = reader.result;
         // console.log(e.target.result.substring(0, 2000));
         resolve(e)
       };
-
-      reader.readAsText(nextProps.currentBook,"windows-1251");
-
+      reader.readAsText(file,"windows-1251");
     })
 
     myProm.then((e)=>{
       // console.log(e.target.result.substring(0, 2000));
       this.setState({cont:splitStr(e.target.result)});
     })
+  }
 
+  componentWillReceiveProps=(nextProps)=>{
+    console.log("Props received, ",
+    this.props.currentBook != undefined ? this.props.currentBook.get('id') : 'None', this.state.viewPos,
+    nextProps.currentBook.get('id'))
+
+    if(this.props.currentBook != undefined)
+      this.props.dispatch({type:'saveViewPos',val:this.props.currentBook.set('viewPos',this.state.viewPos)})
+
+    this.loadBook(nextProps.currentBook.get('file'))
   }
 
 
@@ -54,7 +58,9 @@ class BookView extends Component{
   componentDidUpdate = () => {
     var node = ReactDOM.findDOMNode(this.refs.cont);
     node.scrollTop=node.scrollHeight;
-    document.documentElement.scrollTop = document.body.scrollTop = 2000
+    document.documentElement.scrollTop = document.body.scrollTop =
+      this.props.currentBook != undefined && this.props.currentBook.get('viewPos') != undefined ?
+      this.props.currentBook.get('viewPos') : 2000
 
     console.log("ups scr ",node.scrollTop,node.scrollHeight)
   }
@@ -62,6 +68,9 @@ class BookView extends Component{
   componentDidMount=()=> {
       window.addEventListener("scroll", this.onScroll);
       console.log("book mount")
+
+      if(this.props.currentBook != undefined)
+        this.loadBook(this.props.currentBook.get('file'))      
   }
 
   componentWillUnmount=()=> {
@@ -99,4 +108,4 @@ class BookView extends Component{
 
 // {this.props.cont == "None" ? "No Book" : this.props.cont.name}
 
-export default BookView
+export default connect()(BookView)

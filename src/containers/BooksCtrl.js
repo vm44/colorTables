@@ -1,36 +1,15 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import Select from 'react-select'
-// import 'react-select/dist/react-select.css'
-//
-// import {Range} from 'rc-slider'
-// import 'rc-slider/assets/index.css'
-
-
-// import BoxContainer from '../components/BoxContainer'
-// import {getCurrentTheme} from '../reducers'
-// import VColorBinder from '../containers/VColorBinder'
-// import VSlider,{VsRange} from './VSlider'
-// import WrappedSelector from '../components/WrappedSelector'
-
-// import FontsList from '../FontsList'
 
 const mapStateToProps=function(state){
-  console.log("Map!",state.books.toJS())
+  // console.log("Map!",state.books.toJS())
+  // console.log("Map!",state.books.get('settings').get('byId').toJS())
   // state.books.books.map(x => console.log(x))
   return {
-    // colorThemes:getCurrentTheme(state).colorTheme,
-          // ks:Object.keys(state.colorTheme.data),
-          // selectValue:state.colorTheme.current,
-          books:state.books.get('settings'),
+          books:state.books.get('settings').get('byId'),
           current:state.books.get('current')
-          // l:state.books.books.length
         }
 }
-
-// const createSliderWithTooltip = Slider.createSliderWithTooltip;
-// const Range = createSliderWithTooltip(Slider.Range);
-// const Range = Slider.Range
 
 class BooksCtrl extends Component {
   // state={
@@ -38,12 +17,12 @@ class BooksCtrl extends Component {
   // }
 
   procChg=(e)=>{
-    console.log(e,e.target,e.target.files)
+    // console.log(e,e.target,e.target.files)
     this.props.dispatch({type:"addBookFiles",val:e.target.files})
   }
 
   nameClicked=(e,x)=>{
-    console.log("click B",x);
+    // console.log("click B",x);
     e.preventDefault();
     this.props.dispatch({type:"setCurrentBook",val:x})
   }

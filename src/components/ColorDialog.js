@@ -25,7 +25,6 @@ class ColorDialog extends Component{
 
   render(){
     return(
-      // <div style={{zIndex:'12'}}>
       <div style={{border:"1px solid #ff0000",
         backgroundColor:"#aaaaaa",
         margin:"4",

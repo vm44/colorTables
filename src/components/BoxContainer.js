@@ -29,7 +29,7 @@ class BoxContainer extends Component{
   }
 
   render(){
-    console.log('mapRend:',this.props.color)
+    // console.log('mapRend:',this.props.color)
   return(
     // <a href='#' onClick={(e)=>{e.preventDefault();console.log('box clc!')}}>
     <div style={{color:'red',
@@ -40,8 +40,8 @@ class BoxContainer extends Component{
       border:'solid black 1px'}}>
 
       <div style={{border:'solid #ff0000 1px',
-        width:"100%",
         margin:"4",
+        width:"100%",
         display:"inline-block",
         // overflow:"auto"
       }}>
