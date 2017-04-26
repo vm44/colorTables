@@ -2,19 +2,17 @@ import {REHYDRATE} from 'redux-persist/constants'
 import {List,Map} from 'immutable'
 /*
 Map{
-  byID:Map{
+  byId:Map{
         ID
         pos
 }
 }
 */
-const initState=Map({
-  settings: Map({byId:Map(),
-                 allIds:List()}),
-  currentBook:"None"
-})
+const initSettingsState= Map({byId:Map(),
+                      allIds:List(),
+                    current:undefined})
 
-const booksReducer=(state=initState,action)=>{
+const bookSettingReducer=(state=initSettingsState,action)=>{
   switch (action.type) {
 
     // case REHYDRATE:
@@ -29,7 +27,7 @@ const booksReducer=(state=initState,action)=>{
       // let llm=ll.map(x => {let m=Map({}); m[x.name]=x; return m})
       // let llm=ll.map(x => {const mp=Map(); let m=mp.set(x.name,x); console.log(m.toJS());return m})
       // let llm=ll.map(x => {const innMap=Map({}).merge('id':x.name,'file':x);return innMap;const m=Map().set(x.name,innMap);
-      let llm=ll.map(x => {let innMap=Map().set('id',x.name).set('file',x);const m=Map().set(x.name,innMap);
+      let llm=ll.map(x => {let innMap=Map().set('id',x.name);const m=Map().set(x.name,innMap);
         // console.log(m.toJS());
         return m})
       console.log('llm',llm.toJS())
@@ -37,7 +35,7 @@ const booksReducer=(state=initState,action)=>{
       let llmr=llm.reduce((a,v)=>{console.log('a,v',a,v);return a.merge(v)})
       console.log('llmr',llmr.toJS())
 
-      let rs=state.mergeIn(['settings','byId'],llmr)
+      let rs=state.mergeDeepIn(['byId'],llmr)
       console.log(rs.toJS())
       return rs
 
@@ -59,8 +57,8 @@ const booksReducer=(state=initState,action)=>{
       return state.set('current',action.val)
 
     case 'saveViewPos':
-      console.log('saveViewPos',action.val.get('id'))
-      return state.mergeIn(['settings','byId',action.val.get('id')],action.val)
+      console.log('saveViewPos',action.val.toJS(),state.mergeIn(['byId',action.val.get('id')],action.val).toJS())
+      return state.mergeIn(['byId',action.val.get('id')],action.val)
       // return state.mergeIn(['settings','byId',action.val.get('id'),'viewPos'],action.val.get('viewPos'))
 
     default:
@@ -69,4 +67,37 @@ const booksReducer=(state=initState,action)=>{
   }
 }
 
-export default booksReducer
+const bookFileReducer=(state=initSettingsState,action)=>{
+  switch (action.type) {
+
+    // case REHYDRATE:
+    //   console.log("Rehydr",action);
+    //   return action.payload.books
+
+    case "addBookFiles":
+      let l=[...action.val]
+      let ll=List(l)
+      console.log("books Add",action.val,l,ll.toJS())//,...action.val)
+      // l.map(x=>console.log(x))
+      // let llm=ll.map(x => {let m=Map({}); m[x.name]=x; return m})
+      // let llm=ll.map(x => {const mp=Map(); let m=mp.set(x.name,x); console.log(m.toJS());return m})
+      // let llm=ll.map(x => {const innMap=Map({}).merge('id':x.name,'file':x);return innMap;const m=Map().set(x.name,innMap);
+      let llm=ll.map(x => {let innMap=Map().set('file',x);const m=Map().set(x.name,innMap);
+        // console.log(m.toJS());
+        return m})
+      console.log('llm',llm.toJS())
+
+      let llmr=llm.reduce((a,v)=>{console.log('a,v',a,v);return a.merge(v)})
+      console.log('llmr',llmr.toJS())
+
+      let rs=state.mergeIn(['byId'],llmr)
+      console.log(rs.toJS())
+      return rs
+
+    default:
+      return state
+
+  }
+}
+
+export {bookFileReducer, bookSettingReducer}

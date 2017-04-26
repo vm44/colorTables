@@ -3,7 +3,7 @@ import {combineReducers} from 'redux'
 import {REHYDRATE} from 'redux-persist/constants'
 
 import colorThemeReducer from './Colors'
-import booksReducer from './Books'
+import {bookFileReducer, bookSettingReducer} from './BooksReducers'
 import {reduceSelected, shuffle} from './utils'
 
 // let da=Array.from(new Array(60),(v,i)=>i)
@@ -150,7 +150,8 @@ const getCurrentColorTheme=(state)=>{
 }
 
 export default combineReducers({
-  books: booksReducer,
+  bookSetting: bookSettingReducer,
+  bookFile: bookFileReducer,
   colorTheme: colorThemeReducer,
   // main: reducer // reducer//Dict
   main: mainMapReducer // reducer//Dict

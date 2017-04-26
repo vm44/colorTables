@@ -5,7 +5,7 @@ const mapStateToProps = (state) => {
   // console.log('map CB',state.books.get('settings').get('byId').get(state.books.get('current')))
   return{
     // book: state.books.current,
-    currentBook: state.books.get('settings').get('byId').get(state.books.get('current'))
+    //currentBook: state.books.get('settings').get('byId').get(state.books.get('current'))
   }
 }
 

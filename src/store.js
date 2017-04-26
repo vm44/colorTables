@@ -1,13 +1,15 @@
-import {createStore} from 'redux'
+import {compose, createStore} from 'redux'
 import {persistStore, autoRehydrate} from 'redux-persist'
 import reducer from './reducers'
 import immutableTransform from 'redux-persist-transform-immutable'
 
 // const store=createStore(reducer,{color:colorsInitState})
 // const store=createStore(reducer,undefined)
+// const reducer = combineReducers(reducers)
+// const store = compose(autoRehydrate(), createStore)(reducer)
 const store=createStore(reducer,undefined,autoRehydrate())
 // persistStore(store)
-// persistStore(store, {transforms: [immutableTransform({blacklist:['books']})]})
+persistStore(store, {blacklist:['bookFile'], transforms: [immutableTransform()]})
 
 const getFromStore=(state,branch,key)=>{
   // console.log(state[branch])

@@ -10,10 +10,12 @@ class BookReader extends Component{
     return(
       // <PageLayout leftPanel={<BooksCtrl/>}>
       <PageLayout topMenu={<MainMenu/>} leftPanel={<BooksCtrl/>}>
-        <BookView currentBook={this.props.currentBook}/>
+        <BookView />
       </PageLayout>
     )
   }
 }
 
 export default BookReader
+
+// <BookView currentBook={this.props.currentBook}/>

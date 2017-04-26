@@ -12,6 +12,20 @@ const splitStr = (str) => {
   return pstr
 }
 
+const mapStateToProps = (state) => {
+  // console.log('map CB, current:',state.bookSetting.get('current'))
+  // console.log('map CB, files:',state.bookFile.toJS())
+  console.log('map CB, files:',state.bookSetting.toJS())
+  // console.log('map CB sett',state.bookSetting.get('byId').get(state.bookSetting.get('current')))
+  // console.log('map CB file',state.bookFile.get('byId').get(state.bookSetting.get('current')))
+  return{
+    // book: state.books.current,
+    // currentBook: state.bookSetting.get('byId').get(state.books.get('current'))
+    currentBook:state.bookSetting.get('byId').get(state.bookSetting.get('current')),
+    bookFile:state.bookFile.get('byId').get(state.bookSetting.get('current'))
+  }
+}
+
 
 class BookView extends Component{
   state={
@@ -28,7 +42,8 @@ class BookView extends Component{
         // console.log(e.target.result.substring(0, 2000));
         resolve(e)
       };
-      reader.readAsText(file,"windows-1251");
+      reader.readAsText(file,"UTF-8");
+      // reader.readAsText(file,"windows-1251");
     })
 
     myProm.then((e)=>{
@@ -45,7 +60,8 @@ class BookView extends Component{
     if(this.props.currentBook != undefined)
       this.props.dispatch({type:'saveViewPos',val:this.props.currentBook.set('viewPos',this.state.viewPos)})
 
-    this.loadBook(nextProps.currentBook.get('file'))
+    if(nextProps.bookFile != undefined)
+      this.loadBook(nextProps.bookFile.get('file'))
   }
 
 
@@ -56,11 +72,18 @@ class BookView extends Component{
   //   console.log("ups scr ",node.scrollTop,node.scrollHeight)
   // }
   componentDidUpdate = () => {
+    console.log("didUpdate, viewPos",this.props.viewPos)
     var node = ReactDOM.findDOMNode(this.refs.cont);
     node.scrollTop=node.scrollHeight;
-    document.documentElement.scrollTop = document.body.scrollTop =
-      this.props.currentBook != undefined && this.props.currentBook.get('viewPos') != undefined ?
-      this.props.currentBook.get('viewPos') : 2000
+
+    // if(this.props.bookFile != undefined){
+    //   document.documentElement.scrollTop = document.body.scrollTop = this.state.viewPos
+    // }else{
+      document.documentElement.scrollTop = document.body.scrollTop =
+        this.props.currentBook != undefined && this.props.currentBook.get('viewPos') != undefined ?
+        this.props.currentBook.get('viewPos') : 2000
+    // }
+
 
     console.log("ups scr ",node.scrollTop,node.scrollHeight)
   }
@@ -69,13 +92,17 @@ class BookView extends Component{
       window.addEventListener("scroll", this.onScroll);
       console.log("book mount")
 
-      if(this.props.currentBook != undefined)
-        this.loadBook(this.props.currentBook.get('file'))      
+      if(this.props.bookFile != undefined){
+        this.loadBook(this.props.bookFile.get('file'))
+      }
   }
 
   componentWillUnmount=()=> {
       window.removeEventListener("scroll", this.onScroll);
       console.log("book Unmount")
+
+      if(this.props.currentBook != undefined)
+        this.props.dispatch({type:'saveViewPos',val:this.props.currentBook.set('viewPos',this.state.viewPos)})
   }
 
   onScroll=()=>{
@@ -91,6 +118,8 @@ class BookView extends Component{
       // <div ref="cont" style={{height:"200px"}}>
       // <div ref="cont" style={{height:"90%"}}>
       <div ref="cont" style={{backgroundColor:"#000000",
+          textAlign:"left",
+          textIndent:"30px",
           color:"#00cf00",
           padding:"0px 40px",
           height:"90%"}}>
@@ -108,4 +137,4 @@ class BookView extends Component{
 
 // {this.props.cont == "None" ? "No Book" : this.props.cont.name}
 
-export default connect()(BookView)
+export default connect(mapStateToProps)(BookView)
