@@ -1,3 +1,6 @@
+/*
+@deprecated
+*/
 const reduceSelected=function (dict, key, reducer, action){
 
   let newObj=Object()

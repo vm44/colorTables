@@ -5,6 +5,7 @@ import {REHYDRATE} from 'redux-persist/constants'
 import colorThemeReducer from './Colors'
 import {bookFileReducer, bookSettingReducer} from './BooksReducers'
 import {reduceSelected, shuffle} from './utils'
+import immutableColorsReducer from './immutable/Colors'
 
 // let da=Array.from(new Array(60),(v,i)=>i)
 // const initMainStateDefaultEntry = {  // v:15,
@@ -153,6 +154,7 @@ export default combineReducers({
   bookSetting: bookSettingReducer,
   bookFile: bookFileReducer,
   colorTheme: colorThemeReducer,
+  immutableColors: immutableColorsReducer,
   // main: reducer // reducer//Dict
   main: mainMapReducer // reducer//Dict
 })

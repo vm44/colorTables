@@ -10,6 +10,7 @@ import {Router, Route, hashHistory} from 'react-router'
 import WebFont from 'webfontloader'
 //
 import AppDropzone from './pages/AppDropzone'
+import ColorsMgr from './colors-mgr/ColorsMgr'
 import FontSample from './components/FontSample'
 import PageLayout from './layouts/PageLayout'
 import MainMenu from './components/MainMenu'
@@ -130,6 +131,7 @@ ReactDOM.render(
       <Route path='/2' component={App2} />
       <Route path='/3' component={App3} />
       <Route path='/4' component={()=>(<App4 st={300}/>)} />
+      <Route path='/colorsMgr' component={ColorsMgr} />
       <Route path='/bookReader' component={VBookReader} />
       <Route path='/drz' component={AppDropzone} />
     </Router>

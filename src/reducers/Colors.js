@@ -1,11 +1,6 @@
 import {reduceSelected} from './utils'
+import {createColors} from '../funcs/colors'
 
-const createColors = function(n, func = (i) => {
-    return 0x14f << i
-}) {
-    let da = Array.from(new Array(n), (v, i) => "#" + ("000000" + func(i).toString(16)).substr(-6))
-    return da
-}
 
 // const arrayReducer=function (state=['#ffff00'],action) {
 const arrayReducer=function (state=createColors(2),action) {
