@@ -11,8 +11,8 @@ const mapStateToProps = function(stateI, ownProps) {
   // // console.log('MF:',state.main.toJS())
   // console.log('cellDims',getFromStore(stateI,'main','cellDims'))
   return{
-    height:getFromStore(stateI,'main','frameHeight'),
     width:getFromStore(stateI,'main','frameWidth'),
+    height:getFromStore(stateI,'main','frameHeight'),
     // // hTilesCnt:getFromStore(state,'main',hTilesCnt,
     da:getFromStore(stateI,'main','da'),
     cellDims:getFromStore(stateI,'main','cellDims'),

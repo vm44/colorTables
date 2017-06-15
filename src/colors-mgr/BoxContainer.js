@@ -23,23 +23,26 @@ class BoxContainer extends Component{
     // <a href='#' onClick={(e)=>{e.preventDefault();console.log('box clc!')}}>
     <div style={{color:'red',
       backgroundColor:'white',
+      margin:"1",
+
       // width:"90%",
       // height:200,
 //      float:'left',
       border:'solid black 1px'}}>
 
       <div style={{border:'solid #ff0000 1px',
-        margin:"4",
-        width:"100%",
-        display:"inline-block",
+        margin:"2",
+        // width:"100%",
+        // display:"inline-block",
+        textAlign:"center",
+
         // overflow:"auto"
       }}>
-
-      {this.props.colorEntry[0]}
-    </div>
+        {this.props.colorEntry[0]}
+      </div>
 
       <div style={{border:'solid #ff0000 1px',
-        margin:"4",
+        margin:"2",
         display:"inline-block",
         // overflow:"auto"
       }}>
@@ -47,7 +50,7 @@ class BoxContainer extends Component{
       </div>
 
       <div style={{border:'solid black 1px',
-        margin:"4",}}>
+        margin:"2",}}>
         <DialogLauncher dName="Add Color">
           <ColorDialog onAccept={this.addColor}/>
         </DialogLauncher>

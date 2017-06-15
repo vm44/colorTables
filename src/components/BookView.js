@@ -42,8 +42,8 @@ class BookView extends Component{
         // console.log(e.target.result.substring(0, 2000));
         resolve(e)
       };
-      reader.readAsText(file,"UTF-8");
-      // reader.readAsText(file,"windows-1251");
+      // reader.readAsText(file,"UTF-8");
+      reader.readAsText(file,"windows-1251");
     })
 
     myProm.then((e)=>{

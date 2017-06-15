@@ -10,9 +10,9 @@ import TableSetup from '../containers/TableSetup'
 class App extends Component {
   render() {
     return (
-      <PageLayout topMenu={<MainMenu />} leftPanel={<TableSetup />}>
+      //<PageLayout topMenu={<MainMenu />} leftPanel={<TableSetup />}>
           <VisMainFrame />
-      </PageLayout>
+      //</PageLayout>
     )
   }
 }

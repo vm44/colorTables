@@ -13,7 +13,10 @@ class ColorsMgr extends Component{
     console.log('colorSet:',this.props.colors.get('colorSets').keySeq().toJS())
     console.log('colorSet:',this.props.colors.get('colorSets').entrySeq().toJS())
     return(
-      <div>
+      <div style={{width:"90%",
+        // textAlign:"left",
+        margin:"auto",
+        }}>
       CM
       {this.props.colors.get('colorSets').keySeq().toJS().map((x)=>{return(<div>{x}</div>)})}
       {this.props.colors.get('colorSets').entrySeq().toJS().map((x)=>{return(<div>{x[1]}</div>)})}

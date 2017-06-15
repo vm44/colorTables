@@ -11,6 +11,8 @@ class DialogLauncher extends Component{
   render(){
     return(
         <div style={{backgroundColor:'#222222',
+          textAlign:"center",
+
         // zIndex:'16'
           }}>
           <Button onClick={()=>{this.setState({dialogVisible:!this.state.dialogVisible})}}>

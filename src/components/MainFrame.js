@@ -15,9 +15,12 @@ class TableFrame extends Component{
       // console.log(this.props.cellBkgColor)
       // var rrs=this.props.da.map(x=><ARect cellDims={this.props.cellDims} cellBkgColor={this.props.cellBkgColor} v={x}/>)
 
-      return <div style={{margin:1,
+      return <div style={{margin:5,
               width:this.props.width,
               height:this.props.height,
+              // textAlign:"center",
+              align:"center",
+              // margin:"auto",
 
               // fontFamily:this.props.font,
               // fontSize:"300px",
@@ -25,12 +28,18 @@ class TableFrame extends Component{
               textShadow:"4px 4px 4px #222222",
               backgroundColor:'#220022'}}>
             {/*}  <div style={{margin:"auto",width:"89vw",height:'40vh',backgroundColor:'#440000'}}>*/}
+            <div style={{margin:"auto",//display:"inlineBlock"
+              // width:"98%",
+              // marginTop:"10"
+              padding:"10px"
+            }}>
                 { this.props.da.map(x=>
                   <ARect cellDims={this.props.cellDims}
                     fontsSet={this.props.fontsSet}
                     color={this.props.color}
                     fontSizeRange={this.props.fontSizeRange}
-                    v={x}/>)})}
+                    v={x}/>)}
+                  </div>
             </div>
     }
     // var rrs=this.props.da.map(x=><ARect cellDims={this.props.cellDims} color={this.props.color} v={x}/>)
