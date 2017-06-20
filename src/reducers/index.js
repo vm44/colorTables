@@ -6,6 +6,7 @@ import colorThemeReducer from './Colors'
 import {bookFileReducer, bookSettingReducer} from './BooksReducers'
 import {reduceSelected, shuffle} from './utils'
 import immutableColorsReducer from './immutable/Colors'
+import testAreaReducer from './immutable/testArea'
 
 // let da=Array.from(new Array(60),(v,i)=>i)
 // const initMainStateDefaultEntry = {  // v:15,
@@ -39,7 +40,7 @@ const reCalcCell = function (state) {
   var realHeight=this.state.height/ch-ch*pw; */
   var cellWidth = state.get('frameWidth') / state.get('wTilesCnt') - state.get('wTilesCnt') * pw
   var cellHeight = state.get('frameHeight') / state.get('hTilesCnt') - state.get('hTilesCnt') * pw
-  // console.log('reCCell', 'cellH=', cellHeight)
+  console.log('reCCell', 'cellH=', cellHeight)
   return {
     width: cellWidth,
     height: cellHeight
@@ -155,6 +156,7 @@ export default combineReducers({
   bookFile: bookFileReducer,
   colorTheme: colorThemeReducer,
   immutableColors: immutableColorsReducer,
+  testArea: testAreaReducer,
   // main: reducer // reducer//Dict
   main: mainMapReducer // reducer//Dict
 })

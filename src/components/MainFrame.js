@@ -8,16 +8,26 @@ class TableFrame extends Component{
     }
     render() {
       console.log(this.props.cellDims)
+      // console.log('STATE',this.props.rdxState)
+      // console.log('STATE',this.props.rdxState.main.toJS())
       if(this.props.cellDims === undefined)
         return <div>undef</div>
       // var rrse=this.props.da.map(x=>x)
       // console.log(this.props.cellDims)
       // console.log(this.props.cellBkgColor)
       // var rrs=this.props.da.map(x=><ARect cellDims={this.props.cellDims} cellBkgColor={this.props.cellBkgColor} v={x}/>)
+      console.log('STATE',this.props.rdxState.main.toJS())
+      let bs=this.props.rdxState.main.toJS().data.default
+      let rw=bs.wTilesCnt*bs.cellDims.width
+      let rh=bs.hTilesCnt*bs.cellDims.height
+      let dw=(bs.frameWidth-rw)/2
+      let dh=(bs.frameHeight-rh)/2
+      console.log('STATE bs',bs,rw,rh)
 
-      return <div style={{margin:5,
-              width:this.props.width,
-              height:this.props.height,
+      return <div style={{marginTop:dh,
+              marginLeft:dw,
+              width:bs.width,
+              height:bs.height,
               // textAlign:"center",
               align:"center",
               // margin:"auto",
@@ -28,21 +38,26 @@ class TableFrame extends Component{
               textShadow:"4px 4px 4px #222222",
               backgroundColor:'#220022'}}>
             {/*}  <div style={{margin:"auto",width:"89vw",height:'40vh',backgroundColor:'#440000'}}>*/}
+{/*}
             <div style={{margin:"auto",//display:"inlineBlock"
               // width:"98%",
               // marginTop:"10"
               padding:"10px"
             }}>
-                { this.props.da.map(x=>
-                  <ARect cellDims={this.props.cellDims}
-                    fontsSet={this.props.fontsSet}
-                    color={this.props.color}
-                    fontSizeRange={this.props.fontSizeRange}
-                    v={x}/>)}
-                  </div>
+            */}
+                { bs.da.map(x=>
+                  <ARect bs={bs} color={this.props.color} v={x}/>)}
+              {/*}    </div>*/}
             </div>
     }
     // var rrs=this.props.da.map(x=><ARect cellDims={this.props.cellDims} color={this.props.color} v={x}/>)
+
+    // { bs.da.map(x=>
+    //   <ARect cellDims={bs.cellDims}
+    //     fontsSet={bs.fontsSet}
+    //     color={this.props.color}
+    //     fontSizeRange={bs.fontSizeRange}
+    //     v={x}/>)}
 
     componentWillUpdate=()=>{
     }

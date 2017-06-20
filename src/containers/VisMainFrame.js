@@ -11,6 +11,7 @@ const mapStateToProps = function(stateI, ownProps) {
   // // console.log('MF:',state.main.toJS())
   // console.log('cellDims',getFromStore(stateI,'main','cellDims'))
   return{
+    rdxState:stateI,
     width:getFromStore(stateI,'main','frameWidth'),
     height:getFromStore(stateI,'main','frameHeight'),
     // // hTilesCnt:getFromStore(state,'main',hTilesCnt,

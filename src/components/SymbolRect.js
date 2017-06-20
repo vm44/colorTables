@@ -17,8 +17,8 @@ class SymbolRect extends Component{
   }
 
   calcFontSize=(maxFontSize)=>{
-    let minFS=this.props.fontSizeRange[0]/100
-    let maxFS=this.props.fontSizeRange[1]/100
+    let minFS=this.props.bs.fontSizeRange[0]/100
+    let maxFS=this.props.bs.fontSizeRange[1]/100
     // let dFS=(this.props.fontSizeRange[1]-this.props.fontSizeRange[0])*Math.random()
     let dFS=(maxFS-minFS)*Math.random()
     // console.log(minFS,maxFS,dFS,maxFontSize,maxFontSize*minFS+maxFontSize*dFS)
@@ -56,17 +56,17 @@ class SymbolRect extends Component{
         // backgroundColor:this.props.color.bkg[1],
         // color:this.state.fontColor,//sample(this.props.color.font),//'red',
         // backgroundColor:this.state.bkgColor,//sample(this.props.color.bkg),
-        width:this.props.cellDims.width,
-        height:this.props.cellDims.height,
+        width:this.props.bs.cellDims.width,
+        height:this.props.bs.cellDims.height,
         // fontSize:70,
-        fontFamily:sample(this.props.fontsSet),
+        fontFamily:sample(this.props.bs.fontsSet),
         textShadow:"8px 8px 8px #222222",
-        fontSize:this.calcFontSize(Math.min(this.props.cellDims.width/1.2,this.props.cellDims.height)*0.9),
+        fontSize:this.calcFontSize(Math.min(this.props.bs.cellDims.width/1.2,this.props.bs.cellDims.height)*0.9),
         // fontSize:this.props.fontSizeRange[0],
         float:'left',
 }}>
         <div style={{//backgroundColor:"#333333",
-          lineHeight:(Math.min(this.props.cellDims.width/1.2,this.props.cellDims.height)*0.99).toString()+"px"}}>
+          lineHeight:(Math.min(this.props.bs.cellDims.width/1.2,this.props.bs.cellDims.height)*0.99).toString()+"px"}}>
           {this.props.v}
         </div>
       </div>

@@ -9,12 +9,15 @@ import {Router, Route, hashHistory} from 'react-router'
 //
 import WebFont from 'webfontloader'
 //
+import AdjustableLayout from './components/AdjustableLayout'
 import AppDropzone from './pages/AppDropzone'
 import ColorsMgr from './colors-mgr/ColorsMgr'
 import FontSample from './components/FontSample'
 import PageLayout from './layouts/PageLayout'
 import MainMenu from './components/MainMenu'
 import VBookReader from './containers/VBookReader'
+import TstDim from './components/TstDim'
+import TstDimOffEx from './components/TstDimOffExmpl'
 // import BooksCtrl from './containers/BooksCtrl'
 
 import {store} from './store'
@@ -25,10 +28,32 @@ class App2 extends Component {
     return (
       <PageLayout topMenu={<MainMenu/>}>
         Page 2
+        <div style={{//height:"auto",//"40px",
+          overflow:"visible",
+          border:"1px solid red",
+          display:"block"
+        }}>
+        <TstDim>
+          <TstDim />
+        </TstDim>
+        <TstDim />
+        <TstDim />
+        </div>
         <FontSample text={"Font Sample русс"} fontFamily={"Tangerine, sans"} />
+        <div style={{height:"100px",
+          // padding:30,
+          border:"1px solid red"
+          // display:"inlineBlock"
+        }}>
+          dgfdg
+          gdfgfd
+        <TstDim />
+        <TstDimOffEx />
+        </div>
         <FontSample text={"Font Sample"} fontFamily={"Rokkitt, Extra-Bold"} />
         <FontSample text={"Font Sample"} fontFamily={"Orbitron, Extra-Bold"} />
         <FontSample text={"Font Sample"} fontFamily={"Play, sans"} />
+        <TstDim />
       </PageLayout>
     );
   }
@@ -131,6 +156,7 @@ ReactDOM.render(
       <Route path='/2' component={App2} />
       <Route path='/3' component={App3} />
       <Route path='/4' component={()=>(<App4 st={300}/>)} />
+      <Route path='/5' component={AdjustableLayout} />
       <Route path='/colorsMgr' component={ColorsMgr} />
       <Route path='/bookReader' component={VBookReader} />
       <Route path='/drz' component={AppDropzone} />
