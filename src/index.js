@@ -10,6 +10,7 @@ import {Router, Route, hashHistory} from 'react-router'
 import WebFont from 'webfontloader'
 //
 import AdjustableLayout from './components/AdjustableLayout'
+// import AdjustableLayoutHeap from './components/AdjustableLayoutHeap'
 import AppDropzone from './pages/AppDropzone'
 import ColorsMgr from './colors-mgr/ColorsMgr'
 import FontSample from './components/FontSample'
@@ -157,6 +158,7 @@ ReactDOM.render(
       <Route path='/3' component={App3} />
       <Route path='/4' component={()=>(<App4 st={300}/>)} />
       <Route path='/5' component={AdjustableLayout} />
+    {/*}  <Route path='/adjLayoutHeap' component={AdjustableLayoutHeap} />*/}
       <Route path='/colorsMgr' component={ColorsMgr} />
       <Route path='/bookReader' component={VBookReader} />
       <Route path='/drz' component={AppDropzone} />

@@ -7,7 +7,7 @@ class MyComponent extends React.Component {
     this.props.dispatch({type:"chDims",val:[this.props.containerWidth,this.props.containerHeight]})
     console.log('reRender',this.props.containerWidth,this.props.containerHeight)
     return(
-    <div>
+    <div style={{backgroundColor:'#00af00',height:'100%'}}>
       childs:{this.props.children}
       containerWidth={this.props.containerWidth}
       <br/>

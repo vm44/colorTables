@@ -7,6 +7,7 @@ import {bookFileReducer, bookSettingReducer} from './BooksReducers'
 import {reduceSelected, shuffle} from './utils'
 import immutableColorsReducer from './immutable/Colors'
 import testAreaReducer from './immutable/testArea'
+import heapReducer from './immutable/heap'
 
 // let da=Array.from(new Array(60),(v,i)=>i)
 // const initMainStateDefaultEntry = {  // v:15,
@@ -157,6 +158,7 @@ export default combineReducers({
   colorTheme: colorThemeReducer,
   immutableColors: immutableColorsReducer,
   testArea: testAreaReducer,
+  heap: heapReducer,
   // main: reducer // reducer//Dict
   main: mainMapReducer // reducer//Dict
 })

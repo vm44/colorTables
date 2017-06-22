@@ -1,20 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import TstDim from './TstDim'
 import TstDimKeyed from './TstDimKeyed'
 
 import Slider,{Range} from 'rc-slider'
 import 'rc-slider/assets/index.css'
 
 const mapStateToProps=(state)=>{
-  return {testArea:state.testArea.toJS()}
+  return {testArea:state.testArea.toJS(),
+        heap:state.heap.toJS()}
 }
 
 const func=(props)=>{
-  console.log('ALprops',props.testArea,props.testArea.parentDims)
-  let paddTop=props.testArea.parentDims[1]-props.testArea.vert[1]
-  let paddRight=props.testArea.parentDims[0]-props.testArea.horiz[1]
+  console.log('ALprops',props.testArea,props.heap)
+  let paddTop=props.heap['workArea'][1]-props.testArea.vert[1]
   return (
     <div style={{width:'100vw',
                 height:'100vh',
@@ -34,8 +33,6 @@ const func=(props)=>{
                                 border:'1px solid #ff0000'
                               }}>
                               h
-                              <TstDimKeyed dkey={'ins'} />
-
                     </div>
                     <div style={{width:'100%',
                                 height:'90%',
@@ -50,8 +47,6 @@ const func=(props)=>{
                                           border:'1px solid #ff0000'
                                         }}>
                                         l
-                                        <TstDimKeyed dkey={'ins'} />
-
                               </div>
                               <div style={{width:'20%',
                                           height:'100%',
@@ -59,9 +54,11 @@ const func=(props)=>{
                                           display:'inline-block',
                                           border:'1px solid #ff0000'
                                         }}>
-                                        <Range vertical={true} max={props.testArea.parentDims[1]} value={props.testArea.vert}
+                                        {/*}
+                                        <Range vertical={true} max={props.heap.workArea[1]} value={props.testArea.vert}
                                           onChange={(val)=>{console.log(val);props.dispatch({type:"chVSizeRange",val:val})}}/>
-                              </div>
+*/}
+                                          </div>
                     </div>
 
           </div>
@@ -81,7 +78,7 @@ const func=(props)=>{
                                 // position:"absolute",
                                 border:'4px solid #00ff00'
                               }}>
-                              <Range max={props.testArea.parentDims[0]} value={props.testArea.horiz}
+                              <Range max={props.heap.workArea[0]} value={props.testArea.horiz}
                                 onChange={(val)=>{console.log(val);props.dispatch({type:"chHSizeRange",val:val})}}/>
                               x
                     </div>
@@ -93,24 +90,10 @@ const func=(props)=>{
                                 // position:"absolute",
                                 border:'4px solid #00ff00',
                                 paddingTop:paddTop,//rops.testArea.vert[0],
-                                paddingRight:paddRight,//rops.testArea.vert[0],
-                                paddingLeft:props.testArea.horiz[0],
-                                paddingBottom:props.testArea.vert[0],
+                                paddingLeft:props.testArea.horiz[0]
                               }}>
                               x2
-                              <TstDim>
-                                <div style={{width:'100%',
-                                  height:'100%',
-                                  display:'inline-block',
-                                  border:'4px solid #ffff00'
-                                }}>
-                                  zz
-                                  <p/>
-                                  nh
-                                  <TstDimKeyed dkey={'ins'} />
-                                </div>
-                              </TstDim>
-
+                              <TstDimKeyed dkey={'workArea'} />
                               <div style={{backgroundColor:'#ff3333',
                                 display:'inline-block',
                                 verticalAlign:'top',
