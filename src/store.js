@@ -19,4 +19,14 @@ const getFromStore=(state,branch,key)=>{
   return r
 }
 
-export {store, getFromStore}
+const getFromState=(branchName,key)=>{
+  let state=store.getState()
+  let branch=state[branchName]
+  if(branch.has('current')){
+    let currentKey=branch.get('current')
+    branch=branch.get('data').get(currentKey)
+  }
+  return key === undefined ? branch : branch.get(key)
+}
+
+export {store, getFromStore, getFromState}

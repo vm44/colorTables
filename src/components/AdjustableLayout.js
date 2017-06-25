@@ -1,11 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import Slider,{Range} from 'rc-slider'
+import 'rc-slider/assets/index.css'
 
 import TstDim from './TstDim'
 import TstDimKeyed from './TstDimKeyed'
-
-import Slider,{Range} from 'rc-slider'
-import 'rc-slider/assets/index.css'
+import WorkArea from './RectArea/workArea'
 
 const mapStateToProps=(state)=>{
   return {testArea:state.testArea.toJS()}
@@ -107,7 +107,9 @@ const func=(props)=>{
                                     // display:'inline-block',
                                     // verticalAlign:'top',
                                   }}>
-                                    <TstDimKeyed dkey={'ins'} />
+                                    <TstDimKeyed dkey={'ins'}>
+                                      <WorkArea />
+                                    </TstDimKeyed>
                                   </div>
                         </div>
                       </TstDim>

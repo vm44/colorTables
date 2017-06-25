@@ -43,7 +43,7 @@ class SymbolRect extends Component{
   }
 
   render(){
-    // console.log('ARect:',this.props);
+    console.log('ARect:',this.props.bs,this.props.bs.cellDims);
     // console.log(this.state)
     // console.log("SymbolRect",this.props.fontsSet)//,sample(this.props.fontsSet))
     return(

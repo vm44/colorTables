@@ -17,8 +17,10 @@ import FontSample from './components/FontSample'
 import PageLayout from './layouts/PageLayout'
 import MainMenu from './components/MainMenu'
 import VBookReader from './containers/VBookReader'
+import TableSetup from './containers/TableSetup'
 import TstDim from './components/TstDim'
 import TstDimOffEx from './components/TstDimOffExmpl'
+import Page from './components/Page'
 // import BooksCtrl from './containers/BooksCtrl'
 
 import {store} from './store'
@@ -156,8 +158,9 @@ ReactDOM.render(
       <Route path='/' component={App} />
       <Route path='/2' component={App2} />
       <Route path='/3' component={App3} />
-      <Route path='/4' component={()=>(<App4 st={300}/>)} />
+      <Route path='/4' component={()=>(<App4 st={300} />)} />
       <Route path='/5' component={AdjustableLayout} />
+      <Route path='/p' component={()=>(<Page content={<AdjustableLayout />} topMenu={<MainMenu />} leftPanel={<TableSetup />} />)} />
     {/*}  <Route path='/adjLayoutHeap' component={AdjustableLayoutHeap} />*/}
       <Route path='/colorsMgr' component={ColorsMgr} />
       <Route path='/bookReader' component={VBookReader} />
