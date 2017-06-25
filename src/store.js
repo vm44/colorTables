@@ -8,7 +8,7 @@ import immutableTransform from 'redux-persist-transform-immutable'
 // const reducer = combineReducers(reducers)
 // const store = compose(autoRehydrate(), createStore)(reducer)
 const store=createStore(reducer,undefined,autoRehydrate())
-// persistStore(store)
+// // persistStore(store)
 // persistStore(store, {blacklist:['bookFile'], transforms: [immutableTransform()]})
 
 const getFromStore=(state,branch,key)=>{

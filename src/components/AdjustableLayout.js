@@ -34,7 +34,9 @@ const func=(props)=>{
                                 border:'1px solid #ff0000'
                               }}>
                               h
+                              {/*}
                               <TstDimKeyed dkey={'ins'} />
+                              */}
 
                     </div>
                     <div style={{width:'100%',
@@ -50,7 +52,9 @@ const func=(props)=>{
                                           border:'1px solid #ff0000'
                                         }}>
                                         l
+                                        {/*}
                                         <TstDimKeyed dkey={'ins'} />
+                                        */}
 
                               </div>
                               <div style={{width:'20%',
@@ -76,8 +80,8 @@ const func=(props)=>{
                     <div style={{width:'100%',
                                 height:'10%',
                                 // margin:2,
-                                display:'inline-block',
-                                  verticalAlign:'top',
+                                // display:'inline-block',
+                                  // verticalAlign:'top',
                                 // position:"absolute",
                                 border:'4px solid #00ff00'
                               }}>
@@ -85,44 +89,40 @@ const func=(props)=>{
                                 onChange={(val)=>{console.log(val);props.dispatch({type:"chHSizeRange",val:val})}}/>
                               x
                     </div>
-                    <div style={{width:'100%',
-                                height:'90%',
-                                 margin:2,
-                                display:'inline-block',
-                                  verticalAlign:'top',
-                                // position:"absolute",
-                                border:'4px solid #00ff00',
-                                paddingTop:paddTop,//rops.testArea.vert[0],
-                                paddingRight:paddRight,//rops.testArea.vert[0],
-                                paddingLeft:props.testArea.horiz[0],
-                                paddingBottom:props.testArea.vert[0],
-                              }}>
-                              x2
-                              <TstDim>
-                                <div style={{width:'100%',
-                                  height:'100%',
-                                  display:'inline-block',
-                                  border:'4px solid #ffff00'
-                                }}>
-                                  zz
-                                  <p/>
-                                  nh
-                                  <TstDimKeyed dkey={'ins'} />
-                                </div>
-                              </TstDim>
-
-                              <div style={{backgroundColor:'#ff3333',
-                                display:'inline-block',
-                                verticalAlign:'top',
-                              }}>
-                                d
-                              </div>
-                    </div>
+                      <TstDim>
+                        <div style={{width:'100%',
+                                    height:'90%',
+                                     margin:2,
+                                    // display:'inline-block',
+                                    //   verticalAlign:'top',
+                                    // position:"absolute",
+                                    border:'4px solid #00ff00',
+                                    paddingTop:paddTop,//rops.testArea.vert[0],
+                                    paddingRight:paddRight,//rops.testArea.vert[0],
+                                    paddingLeft:props.testArea.horiz[0],
+                                    paddingBottom:props.testArea.vert[0],
+                                  }}>
+                                  <div style={{height:'100%',
+                                      backgroundColor:'#ff3333',
+                                    // display:'inline-block',
+                                    // verticalAlign:'top',
+                                  }}>
+                                    <TstDimKeyed dkey={'ins'} />
+                                  </div>
+                        </div>
+                      </TstDim>
 
 
           </div>
     </div>
   )
+  // <div style={{width:'100%',
+  //   height:'100%',
+  //   display:'inline-block',
+  //   border:'4px solid #ffff00'
+  // }}>
+  //   {/*}<TstDimKeyed dkey={'ins'} />*/}
+  // </div>
 
 
   // <div style={{width:'100%',
