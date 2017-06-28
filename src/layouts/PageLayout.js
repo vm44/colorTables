@@ -29,9 +29,13 @@ class PageLayout extends Component{
           {this.props.topMenu}
         </VTopPanel>
 
-        <VLeftPanel>
-          {this.props.leftPanel}
-        </VLeftPanel>
+        {this.props.leftPanel ?
+          <VLeftPanel>
+            {this.props.leftPanel}
+          </VLeftPanel>
+          :
+          null
+        }
 
         {this.props.children}
 

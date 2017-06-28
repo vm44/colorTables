@@ -4,20 +4,29 @@ import Dimensions from 'react-dimensions'
 
 class MyComponent extends React.Component {
 
+  // state={reR:false}
+
   componentDidMount(){
+    console.log('ZDMount',this.props.dkey,this.props.containerWidth,this.props.containerHeight)
     this.props.dispatch({type:"store",val:{key:this.props.dkey,data:[this.props.containerWidth,this.props.containerHeight]}})
+    // this.setState('reR',true)
   }
 
   render() {
     // this.props.dispatch({type:"store",val:{key:this.props.dkey,data:[this.props.containerWidth,this.props.containerHeight]}})
-    // console.log('reRender',this.props.dkey,this.props.containerWidth,this.props.containerHeight)
+    console.log('reRenderZ',this.props.dkey,this.props.containerWidth,this.props.containerHeight)
     return(
     <div style={{height:'100%',
       backgroundColor:'#dfaf00'}}>
-      childs:{this.props.children}
-      containerWidth={this.props.containerWidth}
-      <br/>
-      containerHeight={this.props.containerHeight}
+      {this.props.children ? this.props.children :
+        <div>
+          containerWidth={this.props.containerWidth}
+          <br/>
+          containerHeight={this.props.containerHeight}
+      </div>
+
+      }
+      {/*childs:{this.props.children}*/}
 
     </div>)
   }

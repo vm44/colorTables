@@ -12,7 +12,7 @@ overlay timer with controls
 //css - without bootstrap
 //addColor : only curr theme
 //font size
-embed in div
+
 //symbol center
 full theme
 rules for colors gen
@@ -26,3 +26,9 @@ themes
  b/w
 
 only strings with letters
+
+embed in div:
+  mirrored margins
+
+SymbolRect
+  remove size randomize when reRender

@@ -12,9 +12,11 @@ const mapStateToProps=(state)=>{
 }
 
 const func=(props)=>{
-  console.log('ALprops',props.testArea,props.testArea.parentDims)
   let paddTop=props.testArea.parentDims[1]-props.testArea.vert[1]
   let paddRight=props.testArea.parentDims[0]-props.testArea.horiz[1]
+  console.log('ALprops',props.testArea.parentDims,props.testArea.horiz,props.testArea.vert)
+  // if(props.testArea.parentDims[0]==10)
+  //   return null
   return (
     <div style={{width:'100vw',
                 height:'100vh',
@@ -107,9 +109,11 @@ const func=(props)=>{
                                     // display:'inline-block',
                                     // verticalAlign:'top',
                                   }}>
-                                    <TstDimKeyed dkey={'ins'}>
-                                      <WorkArea />
-                                    </TstDimKeyed>
+                                    {props.testArea.parentDims[0]!=10 &&
+                                      <TstDimKeyed dkey={'ins'}>
+                                        <WorkArea />
+                                      </TstDimKeyed>
+                                    }
                                   </div>
                         </div>
                       </TstDim>

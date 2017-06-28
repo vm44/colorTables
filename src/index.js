@@ -22,7 +22,8 @@ import TstDim from './components/TstDim'
 import TstDimOffEx from './components/TstDimOffExmpl'
 import Page from './components/Page'
 // import BooksCtrl from './containers/BooksCtrl'
-
+import VideoYT from './components/VideoYT'
+import Videos from './content/videos'
 import {store} from './store'
  // AIzaSyBZK0tIpg0sOznBoGZmjZaylWqQL9ughRw
 
@@ -151,6 +152,37 @@ class AppT3 extends Component {
 }
 
 
+const testFunc=()=>{
+  return(
+  <div>
+    DDDDDDDDDDDDDD<p/>
+    DDDDDDDDDDDDDD
+  </div>
+
+  )
+}
+
+class testComp extends Component{
+  render(){
+    return(
+      <div>
+        testComp
+      </div>
+    )
+  }
+}
+
+const PageV = ({content}) =>
+  // console.log('contenZ',content)
+    // {/*<PageLayout topMenu={topMenu} leftPanel={leftPanel}>*/}
+    <div>
+      {content}
+      </div>
+    // {/*</PageLayout>*/}
+
+
+
+
 // console.log('entr')
 ReactDOM.render(
   <Provider store={store}>
@@ -162,6 +194,13 @@ ReactDOM.render(
       <Route path='/5' component={AdjustableLayout} />
       <Route path='/p' component={()=>(<Page content={<AdjustableLayout />} topMenu={<MainMenu />} leftPanel={<TableSetup />} />)} />
     {/*}  <Route path='/adjLayoutHeap' component={AdjustableLayoutHeap} />*/}
+    <Route path='/v' component={()=>(<Page content={<Videos />} topMenu={<MainMenu />} />)} />
+    {/*<Route path='/v' component={()=>(<Page content={<div>'dddddddddddd'<testComp /><testFunc /></div>} />)} />*/}
+      <Route path='/v2' component={()=>(<PageV content={<testComp />} />)} />
+    <Route path='/v3' component={()=>(<PageV content={'<testComp />'} />)} />
+    {/*<Route path='/v' component={()=>(<Page content={<testFunc />} />)} />*/}
+      <Route path='/v1' component={Videos} />
+      <Route path='/f' component={testFunc} />
       <Route path='/colorsMgr' component={ColorsMgr} />
       <Route path='/bookReader' component={VBookReader} />
       <Route path='/drz' component={AppDropzone} />

@@ -29,8 +29,8 @@ const reducer=(state=initState, action)=>{
         let m2=m1.map(x=>x)
         let h1=state.get('horiz')
         let v1=state.get('vert')
-        let h2=h1.map(x=>Math.round(x*dh))
-        let v2=v1.map(x=>Math.round(x*dv))
+        let h2=h1.map(x=>Math.round(x/dh))
+        let v2=v1.map(x=>Math.round(x/dv))
         console.log("m1:",m1,m2)
         let st1= state.merge({'parentDims':[...action.val],
           'horiz':h2,
@@ -39,7 +39,7 @@ const reducer=(state=initState, action)=>{
           // 'vert':state.get('vert').toJS().map(x=>Math.round(x*dv)),
         })
         // console.log('rst2',st1.toJS(),state.get('parentDims'),action.val[0],dh,state.get('horiz').map((x)=>{x*dh}))
-        console.log('rst2',st1)
+        console.log('rst2',st1.toJS())
         return st1
       }
       console.log('chDims',action.val)

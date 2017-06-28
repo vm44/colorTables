@@ -6,6 +6,7 @@ const reducer=(st=initSt, act)=>
 {
   switch(act.type){
     case 'store':
+    console.log('storeDims',act)
       return st.set(act.val.key,act.val.data)
     default:
       return st
