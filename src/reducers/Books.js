@@ -1,3 +1,5 @@
+//deprecated
+
 import {REHYDRATE} from 'redux-persist/constants'
 import {List,Map} from 'immutable'
 /*

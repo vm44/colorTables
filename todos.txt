@@ -32,3 +32,6 @@ embed in div:
 
 SymbolRect
   remove size randomize when reRender
+  add mult pages support
+
+hints

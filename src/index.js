@@ -11,6 +11,7 @@ import WebFont from 'webfontloader'
 //
 import AdjustableLayout from './components/AdjustableLayout'
 // import AdjustableLayoutHeap from './components/AdjustableLayoutHeap'
+import AboutMe from './components/AboutMe'
 import AppDropzone from './pages/AppDropzone'
 import ColorsMgr from './colors-mgr/ColorsMgr'
 import FontSample from './components/FontSample'
@@ -187,7 +188,7 @@ const PageV = ({content}) =>
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route path='/' component={App} />
+      <Route path='/Main' component={App} />
       <Route path='/2' component={App2} />
       <Route path='/3' component={App3} />
       <Route path='/4' component={()=>(<App4 st={300} />)} />
@@ -195,6 +196,7 @@ ReactDOM.render(
       <Route path='/p' component={()=>(<Page content={<AdjustableLayout />} topMenu={<MainMenu />} leftPanel={<TableSetup />} />)} />
     {/*}  <Route path='/adjLayoutHeap' component={AdjustableLayoutHeap} />*/}
     <Route path='/v' component={()=>(<Page content={<Videos />} topMenu={<MainMenu />} />)} />
+    <Route path='/AboutMe' component={()=>(<Page content={<AboutMe />} />)} />
     {/*<Route path='/v' component={()=>(<Page content={<div>'dddddddddddd'<testComp /><testFunc /></div>} />)} />*/}
       <Route path='/v2' component={()=>(<PageV content={<testComp />} />)} />
     <Route path='/v3' component={()=>(<PageV content={'<testComp />'} />)} />
@@ -204,6 +206,8 @@ ReactDOM.render(
       <Route path='/colorsMgr' component={ColorsMgr} />
       <Route path='/bookReader' component={VBookReader} />
       <Route path='/drz' component={AppDropzone} />
+      {/*<Route path='/AboutMe' component={AboutMe} />*/}
+      {/*<Route path='/v' component={()=>{<Page content={<Videos />} topMenu={<MainMenu />} />}} />*/}
     </Router>
   </Provider>
 ,

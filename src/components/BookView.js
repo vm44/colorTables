@@ -1,3 +1,4 @@
+import R from 'ramda'
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
@@ -12,18 +13,24 @@ const splitStr = (str) => {
   return pstr
 }
 
+// const mapStateToPropsImm = (state) => {
+//   // console.log('map CB, current:',state.bookSetting.get('current'))
+//   // console.log('map CB, files:',state.bookFile.toJS())
+//   console.log('map CB, files:',state.bookSetting.toJS())
+//   // console.log('map CB sett',state.bookSetting.get('byId').get(state.bookSetting.get('current')))
+//   // console.log('map CB file',state.bookFile.get('byId').get(state.bookSetting.get('current')))
+//   return{
+//     // book: state.books.current,
+//     // currentBook: state.bookSetting.get('byId').get(state.books.get('current'))
+//     currentBook:state.bookSetting.get('byId').get(state.bookSetting.get('current')),
+//     bookFile:state.bookFile.get('byId').get(state.bookSetting.get('current'))
+//   }
+// }
+
 const mapStateToProps = (state) => {
-  // console.log('map CB, current:',state.bookSetting.get('current'))
-  // console.log('map CB, files:',state.bookFile.toJS())
-  console.log('map CB, files:',state.bookSetting.toJS())
-  // console.log('map CB sett',state.bookSetting.get('byId').get(state.bookSetting.get('current')))
-  // console.log('map CB file',state.bookFile.get('byId').get(state.bookSetting.get('current')))
-  return{
-    // book: state.books.current,
-    // currentBook: state.bookSetting.get('byId').get(state.books.get('current'))
-    currentBook:state.bookSetting.get('byId').get(state.bookSetting.get('current')),
-    bookFile:state.bookFile.get('byId').get(state.bookSetting.get('current'))
-  }
+
+  return R.pickAll(['books','viewPos','current'],state['books'])
+
 }
 
 
@@ -53,15 +60,17 @@ class BookView extends Component{
   }
 
   componentWillReceiveProps=(nextProps)=>{
-    console.log("Props received, ",
-    this.props.currentBook != undefined ? this.props.currentBook.get('id') : 'None', this.state.viewPos,
-    nextProps.currentBook.get('id'))
+    // console.log("Props received, ",
+    // this.props.currentBook != undefined ? this.props.currentBook.get('id') : 'None', this.state.viewPos,
+    // nextProps.currentBook.get('id'))
 
-    if(this.props.currentBook != undefined)
-      this.props.dispatch({type:'saveViewPos',val:this.props.currentBook.set('viewPos',this.state.viewPos)})
+    // if(this.props.currentBook != undefined)
+    //   this.props.dispatch({type:'saveViewPos',val:this.props.currentBook.set('viewPos',this.state.viewPos)})
+    if((this.props.current != undefined) && (this.props.current != nextProps.current))
+      this.props.dispatch({type:'saveViewPos',val:{k:this.props.current,v:this.state.viewPos}})
 
-    if(nextProps.bookFile != undefined)
-      this.loadBook(nextProps.bookFile.get('file'))
+    console.log('recProps',nextProps.current)
+    this.loadBook(nextProps.books[nextProps.current])
   }
 
 
@@ -79,9 +88,12 @@ class BookView extends Component{
     // if(this.props.bookFile != undefined){
     //   document.documentElement.scrollTop = document.body.scrollTop = this.state.viewPos
     // }else{
-      document.documentElement.scrollTop = document.body.scrollTop =
-        this.props.currentBook != undefined && this.props.currentBook.get('viewPos') != undefined ?
-        this.props.currentBook.get('viewPos') : 2000
+    let vp=0
+    if(this.props.current && this.props.viewPos){
+      vp=this.props.viewPos[this.props.current]
+    }
+
+    document.documentElement.scrollTop = document.body.scrollTop = vp
     // }
 
 
@@ -90,7 +102,7 @@ class BookView extends Component{
 
   componentDidMount=()=> {
       window.addEventListener("scroll", this.onScroll);
-      console.log("book mount")
+      // console.log("book mount")
 
       if(this.props.bookFile != undefined){
         this.loadBook(this.props.bookFile.get('file'))
@@ -123,7 +135,6 @@ class BookView extends Component{
           color:"#00cf00",
           padding:"0px 40px",
           height:"90%"}}>
-        {this.props.currentBook != undefined ? this.props.currentBook.name : 'None'}
 
         {this.state.cont.map(x => <div dangerouslySetInnerHTML={{__html:x}} />)}
 
