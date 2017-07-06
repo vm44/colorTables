@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './components/TablePage';
 // // import App from './TblFrame';
 // // import App from './App2';
-// import './index.css';
 import {Provider} from 'react-redux'
 import {Router, Route, hashHistory} from 'react-router'
 //

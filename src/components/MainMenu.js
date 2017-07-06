@@ -3,7 +3,10 @@ import {Link} from 'react-router'
 
 
 const MenuItem = ({name,link}) =>
-  <li style={{float:'left',margin:2}}>
+  <li style={{//float:'left',
+    display:'inline',
+    margin:2
+  }}>
     <Link to={link}>
       {name}
     </Link>
@@ -15,17 +18,21 @@ let menuItems=['Main','2','3','4','5','p','colorsMgr','BookReader','AboutMe']
 export default class NavMenu extends Component{
   render(){
     return(
-      <div style={{textAlign:'center',justifyContent:'center',}}>
-        <div style={{textAlign:'center',margin:'0 auto',border:'1px red solid',display:'inline-block'}}>
-        <ul style={{margin:'0 auto',display:'inline',//padding:'10px',fontSize:14,
-          listStyleType:'none'
-          // wordSpacing:'20px'
-        }}>
-        {/*{menuItems.map(x=><MenuItem name={x[0]} link={x[1]} />)}*/}
-          {menuItems.map(x=><MenuItem name={x} link={'/'+x} />)}
-        </ul>
+      // {/*<div style={{
+      //     // textAlign:'center',
+      //   // justifyContent:'center',
+      // }}>*/}
+        <div style={{//margin:'auto',
+          border:'1px red solid',display:'inline-block'}}>
+          <ul style={{display:'inline',//padding:'10px',fontSize:14,
+            listStyleType:'none'
+            // wordSpacing:'20px'
+          }}>
+          {/*{menuItems.map(x=><MenuItem name={x[0]} link={x[1]} />)}*/}
+            {menuItems.map(x=><MenuItem name={x} link={'/'+x} />)}
+          </ul>
         </div>
-      </div>
+      // {/*</div>*/}
     )
     // return(
     //   <ul style={{display:'inline',padding:'100px',fontSize:30,listStyleType:'none'

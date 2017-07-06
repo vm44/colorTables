@@ -6,7 +6,17 @@ const Info=()=> <div>
 <br/>
 DDDDDDDDDDDD
 
-Осваиваю JavaScript, React/Redux
+Занимаюсь JavaScript, React/Redux,
+graphQl,
+придерживаюсь последних веяний: ES6,stateless components
+
+При написании reducer-ов использую Ramda
+
+<a href='https://github.com/vm44/colorTables'>https://github.com/vm44/colorTables</a>
+
+Promise, async/await
+
+редактор Atom
 
 Имею официальный опыт профессии инженера-программиста (системное программирование, микроконтпроллеры),
 а также личный опыт администрирования ПК как desktop-a
@@ -20,9 +30,6 @@ DDDDDDDDDDDD
 О себе
 
 Образование - БГУИР (МРТИ), ФВТ, 1995.
-
-Занимаюсь JavaScript - React/Redux/Immutable
-редактор Atom
 
 
 </div>

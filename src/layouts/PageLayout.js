@@ -7,7 +7,7 @@ import React, {Component} from 'react'
 
 import MainMenu from '../components/MainMenu'
 
-import {VLeftPanel,VTopPanel} from '../components/NavPanels'
+import {LeftPanel as VLeftPanel,TopPanel as VTopPanel} from '../components/NavPanels'
 // import '../App.css';
 
 ////////rem

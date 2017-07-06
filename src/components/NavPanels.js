@@ -63,4 +63,5 @@ class TopPanel extends Component{
 const VLeftPanel=connect()(LeftPanel)
 const VTopPanel=connect()(TopPanel)
 
-export {VLeftPanel,VTopPanel}
+export {LeftPanel,TopPanel}
+// export {VLeftPanel,VTopPanel}

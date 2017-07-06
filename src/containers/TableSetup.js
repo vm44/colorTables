@@ -39,7 +39,7 @@ class TableSetup extends Component{
       margin:"auto",
       zIndex:"0"}}>
 
-      <WrappedSelector options={FontsList}/>
+      <WrappedSelector name={'Choose a Fonts'} options={FontsList}/>
 
       Colors Theme
       <Select name="form-name"
@@ -47,7 +47,8 @@ class TableSetup extends Component{
         value={this.props.selectValue}
         onChange={(val)=>{console.log(val);//this.setState({selectValue:val});
         this.props.dispatch({type:"chTheme",val:val.value})}} />
-      Font Range
+
+      Font Size Range
       <VsRange onChange={(val)=>{console.log(val);this.props.dispatch({type:"chFontSizeRange",val:val})}}/>
       Horizontal
       <VSlider className={'hz'} value={6} max={32} onChange={(val)=>{console.log(val);this.props.dispatch({type:'chgTilesNumber',val:{src:'horz',val:val}})}}/>
