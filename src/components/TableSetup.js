@@ -10,9 +10,9 @@ import 'rc-slider/assets/index.css'
 import BoxContainer from '../components/BoxContainer'
 import {getCurrentTheme} from '../reducers'
 import VColorBinder from '../containers/VColorBinder'
-import VSlider,{VsRange} from './VSlider'
-import WrappedSelector from '../components/WrappedSelector'
-import WrapSelect from '../components/WrapSelect'
+import VSlider,{VsRange} from '../containers/VSlider'
+import WrappedSelector from './WrappedSelector'
+import WrapSelect from './WrapSelect'
 
 import FontsList from '../FontsList'
 
@@ -32,8 +32,6 @@ class TableSetup extends Component{
   //   selectValue:""
   // }
   render(){
-    let options=this.props.ks.map(k => ({value:k, label:k}))
-    // console.log(Range)
     return(
     <div style={{width:"90%",
       // textAlign:"left",
@@ -43,15 +41,9 @@ class TableSetup extends Component{
       <WrapSelect multi={true} name={'themes'} />
       <WrapSelect name={'themes2'} />
       <WrapSelect name={'colorThemes'} />
-      
+
       <WrappedSelector name={'Choose a Fonts'} options={FontsList}/>
 
-      Colors Theme
-      <Select name="form-name"
-        options={options}
-        value={this.props.selectValue}
-        onChange={(val)=>{console.log(val);//this.setState({selectValue:val});
-        this.props.dispatch({type:"chTheme",val:val.value})}} />
 
       Font Size Range
       <VsRange onChange={(val)=>{console.log(val);this.props.dispatch({type:"chFontSizeRange",val:val})}}/>
@@ -72,7 +64,7 @@ class TableSetup extends Component{
   )}
 }
 
-export default connect(mapStateToProps)(TableSetup)
+export default connect()(TableSetup)
 
 // <Range defaultValue={[4,320]} />
 

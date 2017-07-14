@@ -11,6 +11,7 @@ const store=createStore(reducer,undefined,autoRehydrate())
 // // persistStore(store)
 // persistStore(store, {blacklist:['bookFile'], transforms: [immutableTransform()]})
 
+//deprecated
 const getFromStore=(state,branch,key)=>{
   // console.log(state[branch])
   let r=state[branch].get('data').get(state[branch].get('current')).get(key)

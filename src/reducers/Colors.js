@@ -43,7 +43,7 @@ const colorsInitState={
 }
 
 const initColorThemesState={
-  data:{oth:colorsInitState,
+  data:{other:colorsInitState,
         default:{
           font:createColors(4,(i)=>{return 0xcef<<i}),
           bkg:createColors(4,(i)=>{return 0xcfef<<i})

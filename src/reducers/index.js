@@ -5,6 +5,7 @@ import {REHYDRATE} from 'redux-persist/constants'
 import colorThemeReducer from './Colors'
 import {bookFileReducer, bookSettingReducer} from './BooksReducers'
 import bookReducer from './R/Books'
+import valsReducer from './R/WrapSelect'
 import {reduceSelected, shuffle} from './utils'
 import immutableColorsReducer from './immutable/Colors'
 import testAreaReducer from './immutable/testArea'
@@ -149,12 +150,14 @@ const mainMapReducer=(state=initMainState,action)=>{
 // }
 
 const getCurrentColorTheme=(state)=>{
-  // console.log('cColor',state)
-  return state.colorTheme.data[state.colorTheme.current]
+  console.log('cColor',state)
+  // return state.colorTheme.data[state.colorTheme.current]
+  return state.colorTheme.data[state.vals.colorThemes.value || state.vals.colorThemes.options[0]]
 }
 
 export default combineReducers({
   books:bookReducer,
+  vals:valsReducer,
   // bookSetting: bookSettingReducer,
   // bookFile: bookFileReducer,
   colorTheme: colorThemeReducer,

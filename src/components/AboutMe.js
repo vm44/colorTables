@@ -12,6 +12,13 @@ graphQl,
 
 При написании reducer-ов использую Ramda
 
+Опыт с redux:
+
+1. Plain JavaScript objects.
+2. Immutable.js
+3.Ramda.js
+
+
 <a href='https://github.com/vm44/colorTables'>https://github.com/vm44/colorTables</a>
 
 Promise, async/await

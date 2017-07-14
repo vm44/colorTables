@@ -6,6 +6,8 @@ import {getFromStore} from '../store'
 
 const mapStateToProps = function(stateI, ownProps) {
   // console.log("VisMainFrame:",state)
+  console.log("VisMainFrame:",state,stateI.vals.colorThemes.options[0])
+
    let state={}
   //  state.main=stateI.main.toJS()
   // // console.log('MF:',state.main.toJS())
