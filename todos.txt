@@ -1,3 +1,5 @@
+ColorDialog beautify
+//ColorDialog rest on Cancel
 //ok-apply
 accs on colors
 ColorDialog onCanel restore

@@ -8,6 +8,7 @@ import bookReducer from './R/Books'
 import valsReducer from './R/WrapSelect'
 import {reduceSelected, shuffle} from './utils'
 import immutableColorsReducer from './immutable/Colors'
+import colorsReducerR from './R/Colors'
 import testAreaReducer from './immutable/testArea'
 import heapReducer from './immutable/heap'
 
@@ -162,6 +163,7 @@ export default combineReducers({
   // bookFile: bookFileReducer,
   colorTheme: colorThemeReducer,
   immutableColors: immutableColorsReducer,
+  colorsR: colorsReducerR,
   testArea: testAreaReducer,
   heap: heapReducer,
   // main: reducer // reducer//Dict

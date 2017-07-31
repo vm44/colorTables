@@ -41,6 +41,9 @@ const reducer=(state=initState, action)=>
     case "addColorImm":
       let l=state.getIn(['colorSets',action.val.key])
       return state.setIn(['colorSets',action.val.key],l.push(action.val.val))
+    case "restoreColorImm":
+      l=state.getIn(['colorSets',action.val.key])
+      return state.setIn(['colorSets',action.val.key],action.val.val)
     case "rmColorImm":
       console.log(action)
       l=state.getIn(['colorSets',action.val.key])
@@ -49,6 +52,7 @@ const reducer=(state=initState, action)=>
     case "chColorImm":
       console.log(action)
       l=state.getIn(['colorSets',action.val.key])
+      console.log(l.indexOf(action.val.prevColor))
       return state.setIn(['colorSets',action.val.key],l.set(l.indexOf(action.val.prevColor),action.val.color))
 
     default:

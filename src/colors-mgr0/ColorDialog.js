@@ -17,26 +17,38 @@ class ColorDialog extends Component{
   //   this.setState({cColor:this.props.color});
   // }
 
+  componentDidMount=()=>{
+    //this.setState(initColors:)
+  }
+
   handleChange=(color)=>{
+    console.log('handleChange! ',color)
     this.setState({cColor:color.hex,colorChanged:true})
     if(this.state.applyOnChange)
       this.props.onAccept(color.hex)
   }
+
+  onClickAddNew=()=>{this.props.onAdd(this.state.cColor);this.setState({colorChanged:false})}
+  onClickApply=()=>{this.props.onApply(this.state.cColor);this.setState({colorChanged:false})}
 
   render(){
     return(
       <div style={{border:"1px solid #ff0000",
         backgroundColor:"#aaaaaa",
         textAlign:"center",
-        margin:"4",
+        margin:"auto",
         overflow:"auto",
-        display:"inline-block",
+        //display:"inline-block",
         position:"relative",
         zIndex:"1"
       }}>
-        ColorDialog {this.state.cColor}
-        {console.log("ccolr",this.state.cColor)}
-        <ChromePicker color={this.state.cColor} onChange={this.handleChange}/>
+        <div style={{backgroundColor:this.state.cColor}}>
+          ColorDialog {this.state.cColor}
+        </div>
+        {/*//{console.log("ccolr",this.state.cColor)}*/}
+        <div>
+          <ChromePicker color={this.state.cColor} onChange={this.handleChange}/>
+        </div>
 
         <Checkbox ref='check'
           onChange={()=>{console.log(this.refs.check);
@@ -45,26 +57,11 @@ class ColorDialog extends Component{
         </Checkbox>
 
         <Button onClick={()=>{this.props.onOK();if(this.state.colorChanged)this.props.onAccept(this.state.cColor)}}>OK</Button>
-        <Button onClick={()=>{this.props.onAccept(this.state.cColor);this.setState({colorChanged:false})}}>Apply</Button>
-        <Button onClick={()=>{this.props.onOK()}}>Cancel</Button>
+        <Button onClick={this.onClickAddNew}>Add New</Button>
+        <Button onClick={this.onClickApply}>Apply Current</Button>
+        <Button onClick={()=>{this.props.onCancel()}}>Cancel</Button>
       </div>
     )
-    // return(
-    //   // <div style={{zIndex:'12'}}>
-    //   <div>
-    //     ColorDialog {this.state.cColor}
-    //     <ChromePicker color={this.state.cColor} onChange={this.handleChange}/>
-    //     <div style={{backgroundColor:'#eeeeee',
-    //                 height:'30px'}}>
-    //                 nnnn
-    //       <ButtonToolbar>
-    //         <Button onClick={()=>{this.props.onOK();this.props.onAccept(this.state.cColor)}}>OK</Button>
-    //         <Button onClick={()=>{this.props.onAccept(this.state.cColor)}}>Apply</Button>
-    //         <Button onClick={()=>{this.props.onOK()}}>Cancel</Button>
-    //       </ButtonToolbar>
-    //     </div>
-    //   </div>
-    // )
   }
 }
 
