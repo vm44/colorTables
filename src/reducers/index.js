@@ -11,7 +11,7 @@ import immutableColorsReducer from './immutable/Colors'
 import colorsReducerR from './R/Colors'
 import testAreaReducer from './immutable/testArea'
 import heapReducer from './immutable/heap'
-
+import threeReducer from './R/threeD'
 // let da=Array.from(new Array(60),(v,i)=>i)
 // const initMainStateDefaultEntry = {  // v:15,
 //   wTilesCnt: 5,
@@ -166,6 +166,7 @@ export default combineReducers({
   colorsR: colorsReducerR,
   testArea: testAreaReducer,
   heap: heapReducer,
+  threeD: threeReducer,
   // main: reducer // reducer//Dict
   main: mainMapReducer // reducer//Dict
 })

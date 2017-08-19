@@ -13,7 +13,7 @@ const MenuItem = ({name,link}) =>
   </li>
 
   // let menuItems=[['Main',''],['2','/2'],['3','/3'],['BookReader','/bookReader']]
-let menuItems=['Main','2','3','4','5','p','colorsMgr','BookReader','AboutMe']
+let menuItems=['Main','MousePos','2','ThreeJS','3','4','5','p','colorsMgr','BookReader','AboutMe']
 
 export default class NavMenu extends Component{
   render(){
@@ -25,7 +25,8 @@ export default class NavMenu extends Component{
         <div style={{//margin:'auto',
           border:'1px red solid',display:'inline-block'}}>
           <ul style={{display:'inline',//padding:'10px',fontSize:14,
-            listStyleType:'none'
+            listStyleType:'none',
+            paddingLeft:'0'            
             // wordSpacing:'20px'
           }}>
           {/*{menuItems.map(x=><MenuItem name={x[0]} link={x[1]} />)}*/}

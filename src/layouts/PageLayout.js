@@ -28,10 +28,6 @@ class PageLayout extends Component{
     return(//</div> className = 'App'>
       <div style={{textAlign:'center'}}>
 
-        <VTopPanel>
-          {this.props.topMenu || <MainMenu />}
-          {/*{this.props.topMenu}*/}
-        </VTopPanel>
 
         {this.props.leftPanel ?
           <VLeftPanel>
@@ -40,6 +36,10 @@ class PageLayout extends Component{
           :
           null
         }
+        <VTopPanel>
+          {this.props.topMenu || <MainMenu />}
+          {/*{this.props.topMenu}*/}
+        </VTopPanel>
 
         {this.props.children}
 

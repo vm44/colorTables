@@ -16,8 +16,11 @@ import ColorsMgr from './colors-mgr-R/ColorsMgr'
 import FontSample from './components/FontSample'
 import PageLayout from './layouts/PageLayout'
 import MainMenu from './components/MainMenu'
+import MousePos from './components/MousePos'
 import VBookReader from './containers/VBookReader'
 import TableSetup from './containers/TableSetup'
+import ThreeJS from './components/ThreeJS'
+import ThreeSetup from './components/ThreeSetup'
 import TstDim from './components/TstDim'
 import TstDimOffEx from './components/TstDimOffExmpl'
 import Page from './components/Page'
@@ -26,6 +29,7 @@ import VideoYT from './components/VideoYT'
 import Videos from './content/videos'
 import {store} from './store'
  // AIzaSyBZK0tIpg0sOznBoGZmjZaylWqQL9ughRw
+
 
 class App2 extends Component {
   render() {
@@ -182,13 +186,14 @@ const PageV = ({content}) =>
 
 
 
-
 // console.log('entr')
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path='/Main' component={App} />
       <Route path='/2' component={App2} />
+      <Route path='/MousePos' component={MousePos} />
+      <Route path='/ThreeJS' component={()=>(<Page content={<ThreeJS />} leftPanel={<ThreeSetup />} />)} />
       <Route path='/3' component={App3} />
       <Route path='/4' component={()=>(<App4 st={300} />)} />
       <Route path='/5' component={AdjustableLayout} />
@@ -198,7 +203,7 @@ ReactDOM.render(
     <Route path='/AboutMe' component={()=>(<Page content={<AboutMe />} />)} />
     {/*<Route path='/v' component={()=>(<Page content={<div>'dddddddddddd'<testComp /><testFunc /></div>} />)} />*/}
       <Route path='/v2' component={()=>(<PageV content={<testComp />} />)} />
-    <Route path='/v3' component={()=>(<PageV content={'<testComp />'} />)} />
+      <Route path='/v3' component={()=>(<PageV content={'<testComp />'} />)} />
     {/*<Route path='/v' component={()=>(<Page content={<testFunc />} />)} />*/}
       <Route path='/v1' component={Videos} />
       <Route path='/f' component={testFunc} />
