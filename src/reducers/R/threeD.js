@@ -9,16 +9,19 @@ const reducer=(st={},act)=>{
     case acts.SET_MODEL:
       return R.assocPath(['models',act.payload.name],act.payload.model,st)
 
+    case acts.SET_WIREFRAME:
+      return R.assoc('wireframe',act.payload,st)
+
     case 'setAnimation':
       console.log('Anim!')
       return R.assoc('animation',act.payload,st)
 
-    // case 'reLoad':
-    //   return R.assoc('model',act.payload,st)
-    //
-    // case 'loadedModel':
-    //   // console.log("ldd",act)
-    //   return R.assoc('loadedModel',act.payload,st)
+    case 'reLoad':
+      return R.assoc('model',act.payload,st)
+
+    case 'loadedModel':
+      // console.log("ldd",act)
+      return R.assoc('loadedModel',act.payload,st)
 
     default:
       return st

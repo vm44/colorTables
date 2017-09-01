@@ -1,5 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
+// import thunk from 'redux-thunk';
+import * as THREE from 'three'
+
+import * as acts from '../actions'
+
 // import {loadDAE} from '../index'
 
 
@@ -15,24 +20,72 @@ const hc1=(name)=>{
   console.log('clk!',name)
 }
 
-const ListItem = ({parms,name}) =>
-  <li style={{//float:'left',
-    // display:'inline',
-    // margin:2
-  }}>
-    <a href='#' onClick={(e)=>{parms.dispatch({type:'reLoad',payload:{name}});handleClick(e,{name})}}>
-    {/*<a href='#' onClick={hc1}>*/}
-    {/*<a href='#' onClick={()=>{console.log('CLK!',{name})}}>*/}
-      {name}
-    </a>
-  </li>
 
-  // let menuItems=[['Main',''],['2','/2'],['3','/3'],['BookReader','/bookReader']]
-let menuItems=['t1','marine_anims_single','marine_anims_core','three_Exp','three_Exp_A1','three_ExpS','monster','executioner_002t008','cb_anim','tl','T-10_108','t','t3','cube5','dr_single_001','Vampire_001_017pp']
+let menuItems=['mercure_015',
+'clown_002_014',
+'cowboy_c_002_010anExpTh',
+'Knight_001_003t016exp',
+'Vampire_expD_001_016',
+'viking_c_001_007',
+'base_char_001_003','viking_c_001_Head','head_01',
+'three_Exp_A1','executioner_002t008','T-10_exp_108','dr_single_001',
+'head_speznaz2_001_eyes_hat_AM','soldier_0033an','cowboy_c_001_011',
+'Vampire_001_017pp','mh_move_2-02']
 
 
 
 const ThreeSetup=(parms)=>{
+
+  const activateModel=(name)=>{
+
+    return dispatch => {
+      // console.log(name)
+      let fullName='models/'+name.name+'.json'
+    	let l=new THREE.ObjectLoader()
+    	// let l=new THREE.JSONLoader()
+      // l.options.convertUpAxis = true;
+      l.load( fullName, function ( loadedObject ) {
+
+        // console.log('loadObj',loadedObject)
+
+        dispatch({type:'reLoad',payload:name.name})
+        dispatch(acts.setModel(name.name,loadedObject))
+
+    		// loadedObject.traverse( function ( child ) {
+        //
+    		// 	if ( child instanceof THREE.SkinnedMesh ) {
+        //     console.log('child!',child)
+        //
+    		// 		let mesh = child;
+        //     console.log('foundD!',mesh)
+        //
+        //     // return (dispatch,getState)=>{
+        //       // dispatch({type:"setAnimation",payload:undefined})
+        //       // dispatch({type:'reLoad',payload:name.name})
+        //       // dispatch(acts.setModel(name.name,mesh))
+        //     // }
+    		// 	}
+        //
+    		// } );
+
+      })
+    }
+  }
+
+
+  const ListItem = ({parms,name}) =>
+    <li style={{//float:'left',
+      // display:'inline',
+      // margin:2
+    }}>
+      {/*// <a href='#' onClick={(e)=>{parms.dispatch({type:'reLoad',payload:{name}});handleClick(e,{name})}}>*/}
+      <a href='#' onClick={(e)=>{e.preventDefault(); parms.dispatch(activateModel({name}))}}>
+      {/*<a href='#' onClick={hc1}>*/}
+      {/*<a href='#' onClick={()=>{console.log('CLK!',{name})}}>*/}
+        {name}
+      </a>
+    </li>
+
     return(
         <div style={{//margin:'auto',
           border:'1px red solid',display:'inline-block'}}>

@@ -1,12 +1,13 @@
 import * as THREE from 'three'
 import R from 'ramda'
-import OrbitControls from 'orbit-controls-es6';
-import ColladaLoader from 'three-collada-loader'
+// import OrbitControls from 'three-orbit-controls';
+import OrbitControls from './orbit-controls-es6/src';
+// import ColladaLoader from 'three-collada-loader'
 
 import {store} from './store'
 import * as acts from './actions'
 
-var cAnimAction
+var cAnimAction,cModel,mixer
 
       const anim_ctl=()=>{
         let v=store.getState()['main'].toJS()['data']['default']['fontSizeRange'][0]
@@ -27,18 +28,93 @@ var cAnimAction
           }
         }
 
+        let resetEnable=false
         let ms=store.getState()['threeD']
         console.log('msMod',ms)
-        if(ms.models && ms.models.hasOwnProperty(ms.model.name)){
-          let cModel=ms.models[ms.model.name]
+        if(ms.models && ms.models.hasOwnProperty(ms.model)){
+          if(cModel)
+            scene.remove(cModel)
+          if(cModel != ms.models[ms.model])
+            resetEnable=true
+          cModel=ms.models[ms.model]
           console.log(cModel)
-          cModel.geometry.animations.map(x=>console.log(x.name))
+          // scene.add(cModel.children[0])
+          scene.add(cModel)
+          // cModel.children[0].material.wireframe=true
+
+          var box = new THREE.Box3().setFromObject( cModel );
+          let c=new Array(3)
+          let s=new THREE.Sphere
+          // console.log( box.min, box.max, box.size() );
+          box.getSize().toArray(c)
+          box.getBoundingSphere(s)
+          console.log('mSize',c,s)
+
+          if(resetEnable){
+            // controls.reset()
+            camera.position.z=s.radius*1.1
+            //camera.position.y=s.radius*0.51
+          }
+
+          var axisHelper = new THREE.AxisHelper( s.radius );
+          scene.add(axisHelper)
+
+          if(ms.wireframe != undefined)
+            cModel.traverse((c)=>{
+              if(c instanceof THREE.Mesh)
+                c.material.wireframe=ms.wireframe
+            })
+
+          // var axisHelperM = new THREE.AxisHelper(15);
+          // scene.add(axisHelperM)
+          // axisHelperM.position.set(-0.1,-0.1,-0.1)
+
+					// var wireframe = new THREE.WireframeGeometry( cModel.children[0].geometry );
+        //   cModel.children.forEach(x=>{
+				// 	var wireframe = new THREE.EdgesGeometry( x.geometry );
+				// 	var line = new THREE.LineSegments( wireframe );
+        //   console.log("lineM",line)
+        //   //line.up.set(0.0,1.0,0.0)
+        //   line.matrixAutoUpdate=false
+        //   line.matrix=cModel.children[0].matrix
+				// 	line.material.depthTest = false;
+				// 	line.material.opacity = 0.25;
+				// 	line.material.transparent = true;
+				// 	// line.position.x += 0.4;
+        //   // line.lookAt(camera.position)
+        //   cModel.add(line)
+        // })
+					// var wireframe = new THREE.EdgesGeometry( cModel.children[0].geometry );
+					// var line = new THREE.LineSegments( wireframe );
+          // console.log("lineM",line)
+          // //line.up.set(0.0,1.0,0.0)
+          // line.matrixAutoUpdate=false
+          // line.matrix=cModel.children[0].matrix
+					// line.material.depthTest = false;
+					// line.material.opacity = 0.25;
+					// line.material.transparent = true;
+					// // line.position.x += 0.4;
+          // // line.lookAt(camera.position)
+          // cModel.add(line)
+          // scene.add(line)
+
+          // var edges = new THREE.EdgesHelper( cModel.children[0], 0x0000ff);
+          // var edges = new THREE.EdgesHelper( cModel, 0x0000ff);
+          // edges.material.linewidth = 1;
+          // scene.add(edges)
+
+
+
+
+          // cModel.geometry.animations.map(x=>console.log(x.name))
         }
 
         if(ms.animation){
           if(cAnimAction)
             cAnimAction.stop()
-  				cAnimAction = mixer.clipAction( ms.animation.name );
+
+				  mixer = new THREE.AnimationMixer( ms.animation.mod );
+  				cAnimAction = mixer.clipAction( ms.animation.anim.name );
           cAnimAction.play()
         }
 
@@ -232,49 +308,52 @@ var cAnimAction
   }
 
 
-  const loadDAE=(name)=>{
-    var loader = new ColladaLoader();
-		loader.options.convertUpAxis = true;
-
-    loader.load( name, function ( collada ) {
-
-			var object = collada.scene;
-
-			mixer = new THREE.AnimationMixer( object );
-
-			object.traverse( function ( child ) {
-
-				if ( child instanceof THREE.SkinnedMesh ) {
-
-          console.log("skimesh",child)
-
-					var clip = THREE.AnimationClip.parseAnimation( child.geometry.animation, child.geometry.bones );
-					mixer.clipAction( clip, child ).play();
-
-				}
-      })
-
-
-      console.log('collada',collada)
-      var box = new THREE.Box3().setFromObject( collada.scene );
-      let c=new Array(3)
-      let s=new THREE.Sphere
-      // console.log( box.min, box.max, box.size() );
-      box.getSize().toArray(c)
-      box.getBoundingSphere(s)
-      console.log('mSize',c,s)
-      camera.position.z=s.radius*1.1
-      scene.add( collada.scene );
-      collada.scene.name='newObj'
-      store.dispatch({type:"loadedModel",payload:collada.scene})
-
-  })
-}
+//   const loadDAE=(name)=>{
+//     var loader = new ColladaLoader();
+// 		loader.options.convertUpAxis = true;
+//
+//     loader.load( name, function ( collada ) {
+//
+// 			var object = collada.scene;
+//
+// 			mixer = new THREE.AnimationMixer( object );
+//
+// 			object.traverse( function ( child ) {
+//
+// 				if ( child instanceof THREE.SkinnedMesh ) {
+//
+//           console.log("skimesh",child)
+//
+// 					var clip = THREE.AnimationClip.parseAnimation( child.geometry.animation, child.geometry.bones );
+// 					mixer.clipAction( clip, child ).play();
+//
+// 				}
+//       })
+//
+//
+//       console.log('collada',collada)
+//       var box = new THREE.Box3().setFromObject( collada.scene );
+//       let c=new Array(3)
+//       let s=new THREE.Sphere
+//       // console.log( box.min, box.max, box.size() );
+//       box.getSize().toArray(c)
+//       box.getBoundingSphere(s)
+//       console.log('mSize',c,s)
+//       camera.position.z=s.radius*1.1
+//       scene.add( collada.scene );
+//       collada.scene.name='newObj'
+//       store.dispatch({type:"loadedModel",payload:collada.scene})
+//
+//   })
+// }
 
       var enableAnim=true;
       // var mixer
   // const init_3=()=>{
 			var scene = new THREE.Scene();
+      scene.background=new THREE.Color(0x555555)
+      var gridHelper = new THREE.GridHelper();
+      scene.add( gridHelper );
 			var	mixer = new THREE.AnimationMixer( scene );
 
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/(window.innerHeight/1), 0.1, 1000 );
@@ -308,6 +387,23 @@ var cAnimAction
       controls.enabled = true;
       controls.maxDistance = 1500;
       controls.minDistance = 0;
+
+				// LIGHTS
+
+				var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.5 );
+				// hemiLight.color.setHSL( 0.6, 1, 0.6 );
+				// hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
+				hemiLight.position.set( 110, 500, 110 );
+				// scene.add( hemiLight );
+
+				//
+
+				var dirLight = new THREE.DirectionalLight( 0xffffff, 0.21 );
+				dirLight.color.setHSL( 0.1, 1, 0.95 );
+				dirLight.position.set( -1, 1.75, 1 );
+				dirLight.position.multiplyScalar( 450 );
+				scene.add( dirLight );
+
   // }
 			// var animate = function () {
 			const animate = () => {
@@ -350,4 +446,4 @@ var cAnimAction
 
   store.subscribe(anim_ctl)
 
-export {renderer,loadDAE,loadJSON,scene}
+export {renderer,loadJSON,scene}
