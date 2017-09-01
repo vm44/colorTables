@@ -51,7 +51,7 @@ var cAnimAction,cModel,mixer
           console.log('mSize',c,s)
 
           if(resetEnable){
-            // controls.reset()
+            controls.reset()
             camera.position.z=s.radius*1.1
             //camera.position.y=s.radius*0.51
           }
