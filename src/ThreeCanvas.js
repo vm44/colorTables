@@ -7,67 +7,114 @@ import OrbitControls from './orbit-controls-es6/src';
 import {store} from './store'
 import * as acts from './actions'
 
+
+var prevState,currState
+
 var cAnimAction,cModel,mixer
 
       const anim_ctl=()=>{
-        let v=store.getState()['main'].toJS()['data']['default']['fontSizeRange'][0]
-        console.log("anim_ctl!",v)
-        if(v>20){
-          if(enableAnim){
-            enableAnim=false
-            let v=document.getElementById("b3d")
-            v.removeChild( renderer.domElement );
-          }
-        }
-        else{
-          if(!enableAnim){
-            let v=document.getElementById("b3d")
-            v.appendChild( renderer.domElement );
-            enableAnim=true
-            animate()
-          }
-        }
+
+        // let v=store.getState()['main'].toJS()['data']['default']['fontSizeRange'][0]
+        // console.log("anim_ctl!",v)
+        // if(v>20){
+        //   if(enableAnim){
+        //     enableAnim=false
+        //     let v=document.getElementById("b3d")
+        //     v.removeChild( renderer.domElement );
+        //   }
+        // }
+        // else{
+        //   if(!enableAnim){
+        //     let v=document.getElementById("b3d")
+        //     v.appendChild( renderer.domElement );
+        //     enableAnim=true
+        //     animate()
+        //   }
+        // }
+
+        prevState=currState
+        let currState=store.getState()['threeD']
+        // console.log('currStateMod',currState)
 
         let resetEnable=false
-        let ms=store.getState()['threeD']
-        console.log('msMod',ms)
-        if(ms.models && ms.models.hasOwnProperty(ms.model)){
-          if(cModel)
-            scene.remove(cModel)
-          if(cModel != ms.models[ms.model])
-            resetEnable=true
-          cModel=ms.models[ms.model]
-          console.log(cModel)
-          // scene.add(cModel.children[0])
-          scene.add(cModel)
-          // cModel.children[0].material.wireframe=true
 
-          var box = new THREE.Box3().setFromObject( cModel );
-          let c=new Array(3)
-          let s=new THREE.Sphere
-          // console.log( box.min, box.max, box.size() );
-          box.getSize().toArray(c)
-          box.getBoundingSphere(s)
-          console.log('mSize',c,s)
+        // if(currState.model != prevState.model){
+          console.log('tcMod')
+          if(currState.models && currState.models.hasOwnProperty(currState.model)){
+            if(cModel)
+              scene.remove(cModel)
+            if(cModel != currState.models[currState.model])
+              resetEnable=true
+            cModel=currState.models[currState.model]
+            console.log(cModel)
+            // scene.add(cModel.children[0])
+            scene.add(cModel)
+            boxHelper.setFromObject(cModel)
+            // cModel.children[0].material.wireframe=true
 
-          if(resetEnable){
-            controls.reset()
-            camera.position.z=s.radius*1.1
-            //camera.position.y=s.radius*0.51
+            var box = new THREE.Box3().setFromObject( cModel );
+            let c=new Array(3)
+            let s=new THREE.Sphere
+            // console.log( box.min, box.max, box.size() );
+            box.getSize().toArray(c)
+            box.getBoundingSphere(s)
+            console.log('mSize',c,s)
+
+            var axisHelper = new THREE.AxisHelper( s.radius );
+            scene.add(axisHelper)
+
+            if(resetEnable){
+              controls.reset()
+              camera.position.z=s.radius*1.1
+              camera.position.y=s.radius*0.51
+              controls.update()
+
+            }
+          // }
+
+
+          if(currState.wireframe == true){
+            if(!cModel.wireMesh){
+              let pb=new THREE.Object3D()
+              let lMat=new THREE.LineBasicMaterial(0xccccaa)
+              cModel.children.forEach(x=>{
+                console.log(x)
+                if(x.type == 'Mesh'){
+        					var wireframe = new THREE.EdgesGeometry( x.geometry );
+        					var line = new THREE.LineSegments( wireframe, lMat );
+                  // console.log("lineM",line)
+                  line.matrixAutoUpdate=false
+                  line.matrix=cModel.children[0].matrix
+        					line.material.depthTest = true;
+        					line.material.opacity = 0.75;
+        					line.material.transparent = true;
+        					// line.position.x += 0.4;
+                  // line.lookAt(camera.position)
+                  pb.add(line)
+                }
+              })
+              if(pb.children){
+                cModel.add(pb)
+                cModel.wireMesh=pb
+              }
+            }else{
+              cModel.wireMesh.visible=true
+            }
+          }else if(currState.wireframe == false){
+            if(cModel.wireMesh)
+              cModel.wireMesh.visible=false
           }
 
-          var axisHelper = new THREE.AxisHelper( s.radius );
-          scene.add(axisHelper)
 
-          if(ms.wireframe != undefined)
-            cModel.traverse((c)=>{
-              if(c instanceof THREE.Mesh)
-                c.material.wireframe=ms.wireframe
-            })
 
-          // var axisHelperM = new THREE.AxisHelper(15);
-          // scene.add(axisHelperM)
-          // axisHelperM.position.set(-0.1,-0.1,-0.1)
+          // if(currState.wireframe != undefined)
+          //   cModel.traverse((c)=>{
+          //     if(c instanceof THREE.Mesh)
+          //       c.material.wireframe=currState.wireframe
+          //   })
+
+          // console.log('grax',gridHelper,axisHelper)
+
 
 					// var wireframe = new THREE.WireframeGeometry( cModel.children[0].geometry );
         //   cModel.children.forEach(x=>{
@@ -109,12 +156,12 @@ var cAnimAction,cModel,mixer
           // cModel.geometry.animations.map(x=>console.log(x.name))
         }
 
-        if(ms.animation){
+        if(currState.animation){
           if(cAnimAction)
             cAnimAction.stop()
 
-				  mixer = new THREE.AnimationMixer( ms.animation.mod );
-  				cAnimAction = mixer.clipAction( ms.animation.anim.name );
+				  mixer = new THREE.AnimationMixer( currState.animation.mod );
+  				cAnimAction = mixer.clipAction( currState.animation.anim.name );
           cAnimAction.play()
         }
 
@@ -352,9 +399,14 @@ var cAnimAction,cModel,mixer
   // const init_3=()=>{
 			var scene = new THREE.Scene();
       scene.background=new THREE.Color(0x555555)
+
       var gridHelper = new THREE.GridHelper();
       scene.add( gridHelper );
-			var	mixer = new THREE.AnimationMixer( scene );
+
+      var boxHelper = new THREE.BoxHelper();
+      scene.add( boxHelper );
+
+      var	mixer = new THREE.AnimationMixer( scene );
 
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/(window.innerHeight/1), 0.1, 1000 );
 			// var camera = new THREE.OrthographicCamera( 75, window.innerWidth/(window.innerHeight/1), 0.1, 1000 );

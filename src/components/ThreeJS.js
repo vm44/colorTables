@@ -129,17 +129,17 @@ class ThreeJS extends Component{
             </ul>
             :"nml"}*/}
         </div>
-        <div style={{height: "80px",
+        <div style={{height: "60px",
                     position: "fixed",
                     bottom:"0%",
                     width:"100%",
-                    backgroundColor: "#393838",
+                    backgroundColor: "rgba(0,100,0,0.4)",
                     border:'1px solid #44ffff',
                     opacity:"1"}}>
           LOW DIV
           <Checkbox ref='check'// checked={'true'}
             onChange={this.onCheckBoxWireFrameChange}
-              >Apply on change
+              >Wireframe
           </Checkbox>
         </div>
       </div>

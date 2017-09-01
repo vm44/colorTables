@@ -27,8 +27,8 @@ let menuItems=['mercure_015',
 'Knight_001_003t016exp',
 'Vampire_expD_001_016',
 'viking_c_001_007',
-'base_char_001_003','viking_c_001_Head','head_01',
-'three_Exp_A1','executioner_002t008','T-10_exp_108','dr_single_001',
+'GoatHead','viking_c_001_Head','head_01',
+'three_Exp_A1','executioner_002t008','T-10M','Dragon',
 'head_speznaz2_001_eyes_hat_AM','soldier_0033an','cowboy_c_001_011',
 'Vampire_001_017pp','mh_move_2-02']
 
@@ -40,7 +40,7 @@ const ThreeSetup=(parms)=>{
 
     return dispatch => {
       // console.log(name)
-      let fullName='models/'+name.name+'.json'
+      let fullName='models/'+name.name+'/'+name.name+'.json'
     	let l=new THREE.ObjectLoader()
     	// let l=new THREE.JSONLoader()
       // l.options.convertUpAxis = true;
