@@ -14,9 +14,9 @@ const mapStateToProps=(state)=>{
   // console.log('mapS',R.pickAll(['model'],state['threeD']))
   let r = R.pickAll(['models','model','loadedModel'],state['threeD'])
   if(r.model && r.models){
-    console.log('cMR1',r)
+    // console.log('cMR1',r)
     r=R.assoc('currModel',r.models[r.model],r)
-    console.log('cMR2',r)
+    // console.log('cMR2',r)
   }
   return r
 }
@@ -87,65 +87,145 @@ class ThreeJS extends Component{
 
   render=()=>{
     return(
-      <div>
-        <div style={{
-                position:'fixed',
-                border:'1px solid #44ffff',
-                // width:'100%',
-                height:'100%',
-                // zIndex:'-2',
-                top: "0",
-                left: "0",
-                textAlign:"left",
-                display:"inline-block",
-            //    display:"flex",
-                // flexDirection:"row",
-                // justifyContent:"space-between"
-                overflow:"auto",
-                border:"1px solid #ff0000"
+      this.props.currModel ?
+        <div>
+          <div style={{
+                  position:'fixed',
+                  border:'1px solid #44ffff',
+                  // width:'100%',
+                  height:'100%',
+                  // zIndex:'-2',
+                  top: "70",
+                  left: "0",
+                  textAlign:"left",
+                  display:"inline-block",
+              //    display:"flex",
+                  // flexDirection:"row",
+                  // justifyContent:"space-between"
+                  overflow:"auto",
+                  border:"1px solid #ff0000"
 
-          }}>
-          INNER DIV
-          {this.props.currModel ?
-            <Tree
-              //{/*checkable */}
+            }}>
+
+            {/*<Tree
+              //checkable
               defaultExpandAll
               onSelect={this.onSelect} onCheck={this.onCheck}>
               <TreeNode title={"sx"}>
                 {this.getMeshes(this.props.currMode, this.props.currModel.children)}
               </TreeNode>
-              {/*{[...Array(10).keys()].map(x => <TreeNode title={x} key={x} />)}*/}
             </Tree>
-          :null}
-          {/*{this.props.currModel ?
-            <ul>
-              {this.props.currModel.geometry.animations.map(x=>{
-                return(
-                  <li>
-                    <a href='#' onClick={(e)=>{this.linkClicked(e,x)}}>
-                      {x.name}
-                    </a>
-                  </li>)})}
-            </ul>
-            :"nml"}*/}
+*/}
+          </div>
+      		<div style={{
+			color:' #ffffff',
+      position: "absolute",
+      top: "90px",
+      width: '100%',
+      textAlign: "center",
+      /*z-index: 100;*/
+      // display:block;
+
+            }}>
+      			Mouse: Left = rotate, Middle = zoom, Right = pan
+      		</div>
+
+          <div style={{height: "60px",
+                      // display:"inline",
+                      position: "fixed",
+                      bottom:"0%",
+                      width:"100%",
+                      color:"0xffffff",
+                      backgroundColor: "rgba(0,100,0,0.4)",
+                      border:'1px solid #44ffff',
+                      opacity:"1"}}>
+            {/*LOW DIV*/}
+            <Checkbox ref='check'// checked={'true'}
+              onChange={this.onCheckBoxWireFrameChange}
+                >Wireframe
+            </Checkbox>
+            {/*<div style={{color:"0xffffff",display:"inline"}}>Wireframe</div>*/}
+          </div>
         </div>
-        <div style={{height: "60px",
-                    position: "fixed",
-                    bottom:"0%",
-                    width:"100%",
-                    backgroundColor: "rgba(0,100,0,0.4)",
-                    border:'1px solid #44ffff',
-                    opacity:"1"}}>
-          LOW DIV
-          <Checkbox ref='check'// checked={'true'}
-            onChange={this.onCheckBoxWireFrameChange}
-              >Wireframe
-          </Checkbox>
+      :
+        <div style={{
+                position: "fixed",
+                height:"100vh",
+                width:"100vw",
+                display:"flex",
+                flexDirection:"row",
+                justifyContent:"center",
+                alignItems:'center'
+          }}>
+          <h1>Use left panel to choose Model to view</h1>
         </div>
-      </div>
   )
   }
 }
+//
+//
+//   render=()=>{
+//     return(
+//
+//       <div>
+//         <div style={{
+//                 position:'fixed',
+//                 border:'1px solid #44ffff',
+//                 // width:'100%',
+//                 height:'100%',
+//                 // zIndex:'-2',
+//                 top: "0",
+//                 left: "0",
+//                 textAlign:"left",
+//                 display:"inline-block",
+//             //    display:"flex",
+//                 // flexDirection:"row",
+//                 // justifyContent:"space-between"
+//                 overflow:"auto",
+//                 border:"1px solid #ff0000"
+//
+//           }}>
+//           INNER DIV
+//           {this.props.currModel ?
+//             <Tree
+//               //{/*checkable */}
+//               defaultExpandAll
+//               onSelect={this.onSelect} onCheck={this.onCheck}>
+//               <TreeNode title={"sx"}>
+//                 {this.getMeshes(this.props.currMode, this.props.currModel.children)}
+//               </TreeNode>
+//               {/*{[...Array(10).keys()].map(x => <TreeNode title={x} key={x} />)}*/}
+//             </Tree>
+//           :<h1>Choose Model to view</h1>}
+//           {/*{this.props.currModel ?
+//             <ul>
+//               {this.props.currModel.geometry.animations.map(x=>{
+//                 return(
+//                   <li>
+//                     <a href='#' onClick={(e)=>{this.linkClicked(e,x)}}>
+//                       {x.name}
+//                     </a>
+//                   </li>)})}
+//             </ul>
+//             :"nml"}*/}
+//         </div>
+//         <div style={{height: "60px",
+//                     position: "fixed",
+//                     bottom:"0%",
+//                     width:"100%",
+//                     backgroundColor: "rgba(0,100,0,0.4)",
+//                     border:'1px solid #44ffff',
+//                     opacity:"1"}}>
+//           LOW DIV
+//           <Checkbox ref='check'// checked={'true'}
+//             onChange={this.onCheckBoxWireFrameChange}
+//               >Wireframe
+//           </Checkbox>
+//         </div>
+//       </div>
+//   )
+//   }
+// }
 
 export default connect(mapStateToProps)(ThreeJS)
 
@@ -212,3 +292,4 @@ export default connect(mapStateToProps)(ThreeJS)
       </div>
     )
 */
+//              {/*{[...Array(10).keys()].map(x => <TreeNode title={x} key={x} />)}*/}

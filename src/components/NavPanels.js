@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
+// import {connect} from 'react-redux'
 
 
 class ScreenLayer extends Component{
@@ -9,7 +9,7 @@ class ScreenLayer extends Component{
                   width:"100%",
                   // pointerEvents:"none",
                   position:"fixed",
-                backgroundColor: "rgba(0,100,0,0.4)"}}
+                backgroundColor: "rgba(0,100,0,0.7)"}}
             onWheel={(e)=>{console.log(this.props.name,"wheel!",e.deltaY,e.deltaY)}}
             onMouseMove={(e)=>{console.log(this.props.name,"move!",e.screenX,e.screenY)}}>
         {this.props.children}
@@ -22,7 +22,7 @@ class ScreenLayer extends Component{
 class LeftPanel extends Component{
 
   state={
-    width:"10px"
+    width:"70px"
   }
 
   render(){
@@ -32,7 +32,7 @@ class LeftPanel extends Component{
           height: "100%",
           width: this.state.width,
           position: "fixed",
-          zIndex: "10",
+          zIndex: "12",
           top: "0",
           left: "0",
           backgroundColor: "#f1f1f1",
@@ -40,9 +40,9 @@ class LeftPanel extends Component{
           transition: "0.5s",
           paddingTop: "16px"
 
-        }} onMouseEnter={()=>{this.setState({width:"450px"})}} onMouseLeave={()=>{this.setState({width:"10px"})}}>
+        }} onMouseEnter={()=>{this.setState({width:"450px"})}} onMouseLeave={()=>{this.setState({width:"50px"})}}>
 
-          {this.props.children}
+          {this.state.width != "4500px" ? this.props.children : "LEFT"}
 
         </div>
       // {/*</ScreenLayer>*/}
@@ -53,7 +53,7 @@ class LeftPanel extends Component{
 class TopPanel extends Component{
 
   state={
-    height:"10px"
+    height:"70px"
   }
 
   render(){
@@ -66,12 +66,12 @@ class TopPanel extends Component{
           zIndex: "10",
           top: "0",
           left: "0",
-          backgroundColor: "rgba(66,111,11,0.4)",
+          backgroundColor: "rgba(66,111,11,0.7)",
           overflowX: "hidden",
           transition: "0.5s",
           paddingTop: "6px"
 
-        }} onMouseEnter={()=>{this.setState({height:"50px"})}} onMouseLeave={()=>{this.setState({height:"10px"})}}>
+        }} onMouseEnter={()=>{this.setState({height:"70px"})}} onMouseLeave={()=>{this.setState({height:"70px"})}}>
 
           {this.props.children}
 
@@ -81,8 +81,8 @@ class TopPanel extends Component{
   }
 }
 
-const VLeftPanel=connect()(LeftPanel)
-const VTopPanel=connect()(TopPanel)
+// const VLeftPanel=connect()(LeftPanel)
+// const VTopPanel=connect()(TopPanel)
 
 export {LeftPanel,TopPanel}
 // export {VLeftPanel,VTopPanel}

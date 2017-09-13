@@ -4,7 +4,7 @@ import App from './components/TablePage';
 // // import App from './TblFrame';
 // // import App from './App2';
 import {Provider} from 'react-redux'
-import {Router, Route, hashHistory} from 'react-router'
+import {IndexRedirect, IndexRoute, Redirect, Router, Route, hashHistory} from 'react-router'
 //
 import WebFont from 'webfontloader'
 //
@@ -190,26 +190,29 @@ const PageV = ({content}) =>
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
+      <Redirect from="/" exact to="/ThreeJS" />
+      {/*<IndexRedirect to="/ThreeJS" />*/}
+      {/*<IndexRoute component={()=>(<Page content={<ThreeJS />} leftPanel={<ThreeSetup />} />)}/>*/}
       <Route path='/Main' component={App} />
       <Route path='/2' component={App2} />
       <Route path='/MousePos' component={MousePos} />
       <Route path='/ThreeJS' component={()=>(<Page content={<ThreeJS />} leftPanel={<ThreeSetup />} />)} />
-      <Route path='/3' component={App3} />
-      <Route path='/4' component={()=>(<App4 st={300} />)} />
-      <Route path='/5' component={AdjustableLayout} />
+      {/*<Route path='/3' component={App3} />*/}
+      {/*<Route path='/4' component={()=>(<App4 st={300} />)} />*/}
+      {/*<Route path='/5' component={AdjustableLayout} />*/}
       <Route path='/p' component={()=>(<Page content={<AdjustableLayout />} topMenu={<MainMenu />} leftPanel={<TableSetup />} />)} />
     {/*}  <Route path='/adjLayoutHeap' component={AdjustableLayoutHeap} />*/}
-    <Route path='/v' component={()=>(<Page content={<Videos />} topMenu={<MainMenu />} />)} />
+    <Route path='/Video' component={()=>(<Page content={<Videos />} topMenu={<MainMenu />} />)} />
     <Route path='/AboutMe' component={()=>(<Page content={<AboutMe />} />)} />
     {/*<Route path='/v' component={()=>(<Page content={<div>'dddddddddddd'<testComp /><testFunc /></div>} />)} />*/}
-      <Route path='/v2' component={()=>(<PageV content={<testComp />} />)} />
-      <Route path='/v3' component={()=>(<PageV content={'<testComp />'} />)} />
+      {/*<Route path='/v2' component={()=>(<PageV content={<testComp />} />)} />*/}
+      {/*<Route path='/v3' component={()=>(<PageV content={'<testComp />'} />)} />*/}
     {/*<Route path='/v' component={()=>(<Page content={<testFunc />} />)} />*/}
-      <Route path='/v1' component={Videos} />
-      <Route path='/f' component={testFunc} />
+      {/*<Route path='/v1' component={Videos} />*/}
+      {/*<Route path='/f' component={testFunc} />*/}
       <Route path='/colorsMgr' component={ColorsMgr} />
       <Route path='/bookReader' component={VBookReader} />
-      <Route path='/drz' component={AppDropzone} />
+      {/*<Route path='/drz' component={AppDropzone} />*/}
       {/*<Route path='/AboutMe' component={AboutMe} />*/}
       {/*<Route path='/v' component={()=>{<Page content={<Videos />} topMenu={<MainMenu />} />}} />*/}
     </Router>
@@ -217,3 +220,5 @@ ReactDOM.render(
 ,
   document.getElementById('root')
 );
+
+// ThreeSetup.activateModel('T-10M')
