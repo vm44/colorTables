@@ -190,7 +190,7 @@ const PageV = ({content}) =>
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Redirect from="/" exact to="/ThreeJS" />
+      <Redirect from="/" exact to="/Models" />
       {/*<IndexRedirect to="/ThreeJS" />*/}
       {/*<IndexRoute component={()=>(<Page content={<ThreeJS />} leftPanel={<ThreeSetup />} />)}/>*/}
       <Route path='/Main' component={App} />
