@@ -14,7 +14,7 @@ const MenuItem = ({name,link}) =>
 
   // let menuItems=[['Main',''],['2','/2'],['3','/3'],['BookReader','/bookReader']]
 // let menuItems=['Main','MousePos','2','ThreeJS','Video','3','4','5','p','colorsMgr','BookReader','AboutMe']
-let menuItems=['ThreeJS','Video']
+let menuItems=['Models','Video']
 
 export default class NavMenu extends Component{
   render(){

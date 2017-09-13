@@ -196,7 +196,7 @@ ReactDOM.render(
       <Route path='/Main' component={App} />
       <Route path='/2' component={App2} />
       <Route path='/MousePos' component={MousePos} />
-      <Route path='/ThreeJS' component={()=>(<Page content={<ThreeJS />} leftPanel={<ThreeSetup />} />)} />
+      <Route path='/Models' component={()=>(<Page content={<ThreeJS />} leftPanel={<ThreeSetup />} />)} />
       {/*<Route path='/3' component={App3} />*/}
       {/*<Route path='/4' component={()=>(<App4 st={300} />)} />*/}
       {/*<Route path='/5' component={AdjustableLayout} />*/}

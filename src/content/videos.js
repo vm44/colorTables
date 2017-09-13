@@ -10,7 +10,9 @@ const f=()=>{
      descr:"Python, Panda3d, OCC",
      url:"WUbC44jfnlk"},
     {title:"ПДД симулятор",
-     descr:"Java/Scala, JMonkeyEngine",
+     descr:"Java/Scala, JMonkeyEngine", //Bezier, Catmull-Rom. sin,cos,tg.\
+    //  Светофоры работают, контроль расположения на проезжей части,\
+    //  скорости, подачи сигналов поворота",
      url:"OhtHy1TzLtA"},
     {title:"ПДД симулятор",
      descr:"Java/Scala, JMonkeyEngine",
@@ -55,8 +57,10 @@ const f=()=>{
             }}>
               <VideoYT vId={x.url} />
             </div>
-            <div>
+            <div style={{align:"center"}}>
+            <div style={{width:"100%"}}>
               {x.descr+ ", программное построение окружения"}
+            </div>
             </div>
           </div>
         </div>)}

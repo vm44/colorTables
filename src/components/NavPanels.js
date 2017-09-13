@@ -40,7 +40,7 @@ class LeftPanel extends Component{
           transition: "0.5s",
           paddingTop: "16px"
 
-        }} onMouseEnter={()=>{this.setState({width:"450px"})}} onMouseLeave={()=>{this.setState({width:"50px"})}}>
+        }} onMouseEnter={()=>{this.setState({width:"150px"})}} onMouseLeave={()=>{this.setState({width:"50px"})}}>
 
           {this.state.width != "4500px" ? this.props.children : "LEFT"}
 

@@ -30,7 +30,7 @@ let menuItems=[
 // 'Vampire_expD_001_016',
 // 'viking_c_001_007',
 'GoatHead',
-'VikingHead',
+// 'VikingHead',
 // 'three_Exp_A1','executioner_002t008',
 'T-10M','Dragon',
 // 'head_speznaz2_001_eyes_hat_AM','soldier_0033an','cowboy_c_001_011',
