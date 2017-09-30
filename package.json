@@ -8,6 +8,8 @@
     "react-scripts": "1.0.12"
   },
   "dependencies": {
+    "glamor": "^2.20.40",
+    "glamorous": "^4.9.7",
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "orbit-controls-es6": "^1.0.10",

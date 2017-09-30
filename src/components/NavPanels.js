@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 // import {connect} from 'react-redux'
+import glamorous from 'glamorous'
 
 
 class ScreenLayer extends Component{
@@ -18,11 +19,108 @@ class ScreenLayer extends Component{
   }
 }
 
+const DivLow=glamorous.div(props => {
+  console.log('gprops',props)
+  if(props.props.open)
+    return {
+      // display:"inline-block",
+      height: "100%",
+      width: "400px",
+      position: "fixed",
+      zIndex: "12",
+      top: "20vh",
+      left: "0",
+      backgroundColor: "#f1f1f1",
+      overflowX: "visible",
+      overflowY: "scroll",
+      transition: "0.5s",
+      paddingTop: "16px",
+      opacity: 1
+
+    }; else
+    return {
+      // display:"inline-block",
+      height: "10%",
+      width: "40px",
+      position: "fixed",
+      zIndex: "12",
+      top: "50vh",
+      left: "0",
+      backgroundColor: "#f1f1f1",
+      overflowX: "visible",
+      overflowY: "scroll",
+      transition: "0.5s",
+      paddingTop: "16px",
+      opacity: 0.51
+
+    }
+}
+)
+
 
 class LeftPanel extends Component{
 
   state={
-    width:"70px"
+    open:false
+  }
+
+  render(){
+    return(
+      // {/*<ScreenLayer name={"left"}>*/}
+        <DivLow props={this.state}
+          onMouseEnter={()=>{this.setState({open:true})}}
+          onMouseLeave={()=>{this.setState({open:false})}}>
+
+          {this.state.open ? this.props.children : "<<<"}
+
+        </DivLow>
+      // {/*</ScreenLayer>*/}
+    )
+  }
+}
+
+class LeftPanelP2 extends Component{
+
+  state={
+    top:"50vh",
+    width:"40px",
+    height:"10vh",
+    opacity:0.5,
+  }
+
+  render(){
+    return(
+      // {/*<ScreenLayer name={"left"}>*/}
+        <div style={{
+          display:"inline-block",
+          height: this.state.height,
+          width: this.state.width,
+          position: "fixed",
+          zIndex: "12",
+          top: this.state.top,
+          left: "0",
+          backgroundColor: "#f1f1f1",
+          // overflowX: "visible",
+          // overflowY: "scroll",
+          transition: "0.5s",
+          paddingTop: "16px",
+          opacity: this.state.opacity
+
+        }} onMouseEnter={()=>{this.setState({top:"20vh",width:"350px",height:"60%",opacity:1})}}
+          onMouseLeave={()=>{this.setState({top:"50vh",width:"40px",height:"10vh",opacity:0.5})}}>
+
+          {this.state.width != "40px" ? this.props.children : "<<<"}
+
+        </div>
+      // {/*</ScreenLayer>*/}
+    )
+  }
+}
+
+class LeftPanelPrev extends Component{
+
+  state={
+    width:"10px"
   }
 
   render(){
@@ -40,7 +138,7 @@ class LeftPanel extends Component{
           transition: "0.5s",
           paddingTop: "16px"
 
-        }} onMouseEnter={()=>{this.setState({width:"150px"})}} onMouseLeave={()=>{this.setState({width:"50px"})}}>
+        }} onMouseEnter={()=>{this.setState({width:"150px"})}} onMouseLeave={()=>{this.setState({width:"10px"})}}>
 
           {this.state.width != "4500px" ? this.props.children : "LEFT"}
 

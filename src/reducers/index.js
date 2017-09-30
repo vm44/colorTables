@@ -1,16 +1,18 @@
 import {Map} from 'immutable'
 import {combineReducers} from 'redux'
-import {REHYDRATE} from 'redux-persist/constants'
+// import {REHYDRATE} from 'redux-persist/constants'
 
 import colorThemeReducer from './Colors'
-import {bookFileReducer, bookSettingReducer} from './BooksReducers'
+// import {bookFileReducer, bookSettingReducer} from './BooksReducers'
 import bookReducer from './R/Books'
+import boxMasterReducer from './R/BoxMaster'
 import valsReducer from './R/WrapSelect'
 import {reduceSelected, shuffle} from './utils'
 import immutableColorsReducer from './immutable/Colors'
 import colorsReducerR from './R/Colors'
 import testAreaReducer from './immutable/testArea'
 import heapReducer from './immutable/heap'
+import heapRamdaReducer from './R/heap'
 import threeReducer from './R/threeD'
 // let da=Array.from(new Array(60),(v,i)=>i)
 // const initMainStateDefaultEntry = {  // v:15,
@@ -157,8 +159,9 @@ const getCurrentColorTheme=(state)=>{
 }
 
 export default combineReducers({
-  books:bookReducer,
-  vals:valsReducer,
+  books: bookReducer,
+  boxMaster: boxMasterReducer,
+  vals: valsReducer,
   // bookSetting: bookSettingReducer,
   // bookFile: bookFileReducer,
   colorTheme: colorThemeReducer,
@@ -166,6 +169,7 @@ export default combineReducers({
   colorsR: colorsReducerR,
   testArea: testAreaReducer,
   heap: heapReducer,
+  heapR: heapRamdaReducer,
   threeD: threeReducer,
   // main: reducer // reducer//Dict
   main: mainMapReducer // reducer//Dict

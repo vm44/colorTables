@@ -17,5 +17,3 @@ class BookReader extends Component{
 }
 
 export default BookReader
-
-// <BookView currentBook={this.props.currentBook}/>

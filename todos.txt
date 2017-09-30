@@ -1,3 +1,5 @@
+color tables:
+start, stop, reset, update
 ColorDialog beautify
 //ColorDialog rest on Cancel
 //ok-apply

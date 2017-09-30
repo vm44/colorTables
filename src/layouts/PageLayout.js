@@ -40,8 +40,9 @@ class PageLayout extends Component{
           {this.props.topMenu || <MainMenu />}
           {/*{this.props.topMenu}*/}
         </VTopPanel>
-
-        {this.props.children}
+        {/*<div style={{height:"100vh"}}>*/}
+          {this.props.children}
+        {/*</div>*/}
 
       </div>
     )

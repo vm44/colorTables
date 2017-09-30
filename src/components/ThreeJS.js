@@ -58,7 +58,7 @@ class ThreeJS extends Component{
   }
 
   getMeshes=(tparent,node)=>{
-    console.log('node',node)
+    // console.log('node',node)
     return(
       node.map(x =>
         <TreeNode title={x.name} key={x.name} tparent={tparent} udata={x}>
