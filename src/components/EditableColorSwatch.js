@@ -4,7 +4,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import reactCSS from 'reactcss'
 import { ChromePicker } from 'react-color'
-import {Button,DropdownButton, MenuItem} from 'react-bootstrap'
+import {Button, DropdownButton, MenuItem} from 'react-bootstrap'
 
 import ColorDialog from './ColorDialog'
 
@@ -52,6 +52,7 @@ class EditableColorSwatch extends React.Component {
           borderRadius: '1px',
           boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
           // display: 'inline-block',
+          overflow:"visible",
           cursor: 'pointer',
         },
         popover: {
@@ -85,10 +86,16 @@ class EditableColorSwatch extends React.Component {
           </DropdownButton>
 
           { this.state.displayColorPicker ?
-            <div style={ styles.popover }>
-              <div style={ styles.cover } onClick={ this.handleClose }/>
-              <ColorDialog initColor={this.props.color} onOK={this.handleClose} onAccept={this.handleChange}/>
-            </div>
+<div style={{border:"1px solid #ff0000",
+            position:"absolute",
+            width:"25vw",
+            height:"5vw",}}>
+            ddd</div>
+            // <div style={ styles.popover }>
+            //   <div style={ styles.cover } onClick={ this.handleClose }/>
+            //   <ColorDialog initColor={this.props.color} onOK={this.handleClose} onAccept={this.handleChange}/>
+            // </div>
+
             : null }
 
         </div>

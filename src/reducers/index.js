@@ -13,6 +13,7 @@ import colorsReducerR from './R/Colors'
 import testAreaReducer from './immutable/testArea'
 import heapReducer from './immutable/heap'
 import heapRamdaReducer from './R/heap'
+import stackedReducer from './R/StackedMenu'
 import threeReducer from './R/threeD'
 // let da=Array.from(new Array(60),(v,i)=>i)
 // const initMainStateDefaultEntry = {  // v:15,
@@ -27,7 +28,6 @@ const initMainStateDefaultEntry = Map({  // v:15,
   wTilesCnt: 5,
   hTilesCnt: 4,
   fontSizeRange: [4, 100],
-    // cellBkgColor:'#fffff0',font:"Arial",
   fontsSet: ['Roboto', 'Play'],
   da: shuffle(Array.from(new Array(20), (v, i) => i)),
 })
@@ -170,6 +170,7 @@ export default combineReducers({
   testArea: testAreaReducer,
   heap: heapReducer,
   heapR: heapRamdaReducer,
+  stackedMenu: stackedReducer,
   threeD: threeReducer,
   // main: reducer // reducer//Dict
   main: mainMapReducer // reducer//Dict

@@ -24,7 +24,7 @@ const DivLow=glamorous.div(props => {
   if(props.props.open)
     return {
       // display:"inline-block",
-      height: "100%",
+      height: "80vh",
       width: "400px",
       position: "fixed",
       zIndex: "12",
@@ -32,7 +32,7 @@ const DivLow=glamorous.div(props => {
       left: "0",
       backgroundColor: "#f1f1f1",
       overflowX: "visible",
-      overflowY: "scroll",
+      overflow: "auto",
       transition: "0.5s",
       paddingTop: "16px",
       opacity: 1
@@ -46,9 +46,9 @@ const DivLow=glamorous.div(props => {
       zIndex: "12",
       top: "50vh",
       left: "0",
-      backgroundColor: "#f1f1f1",
-      overflowX: "visible",
-      overflowY: "scroll",
+      backgroundColor: "#41f1f1",
+      // overflowX: "visible",
+      // overflowY: "scroll",
       transition: "0.5s",
       paddingTop: "16px",
       opacity: 0.51
@@ -58,7 +58,7 @@ const DivLow=glamorous.div(props => {
 )
 
 
-class LeftPanel extends Component{
+class LeftPanelT extends Component{
 
   state={
     open:false
@@ -66,20 +66,55 @@ class LeftPanel extends Component{
 
   render(){
     return(
-      // {/*<ScreenLayer name={"left"}>*/}
-        <DivLow props={this.state}
-          onMouseEnter={()=>{this.setState({open:true})}}
-          onMouseLeave={()=>{this.setState({open:false})}}>
+      <div style={{
+      height: "80vh",
+      width: "400px",
+      position: "fixed",
+      zIndex: "12",
+      top: "20vh",
+      left: "0",
+      backgroundColor: "#f1f1f1",
+      overflowX: "hidden",
+      overflowY: "scroll",
+      transition: "0.5s",
+      paddingTop: "16px",
+      opacity: 1
 
-          {this.state.open ? this.props.children : "<<<"}
+    }}>
+      {/*<div style={{position:"relative"}}>
+        <div style={{position:"absolute",
+            border:"1px solid #ff0000",
+          width:"50vw"}}>ddd</div>
+    </div>*/}
+      {this.props.children}
 
-        </DivLow>
-      // {/*</ScreenLayer>*/}
-    )
+  </div>
+  )
+//
+//       // {/*<ScreenLayer name={"left"}>*/}
+//         <DivLow props={this.state}
+//           onMouseEnter={()=>{this.setState({open:true})}}
+//           onMouseLeave={()=>{this.setState({open:false})}}>
+//
+//
+//           <div style={{border:"1px solid #ff0000",
+//             width:"50vw"}}>ddd</div>
+//           {this.state.open ? this.props.children : "<<<"}
+//           {/*{this.state.open ?
+//             <div style={{border:"1px solid #ff0000",height:"150vh"}}>
+//               {Array.apply(0, Array(40)).map(function (x, i) {
+//                   return <div key={i}>a</div>;
+//                 })}
+//             </div>
+//             : "<<<"}
+// */}
+//         </DivLow>
+//       // {/*</ScreenLayer>*/}
+//     )
   }
 }
 
-class LeftPanelP2 extends Component{
+class LeftPanel extends Component{
 
   state={
     top:"50vh",

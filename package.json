@@ -1,11 +1,15 @@
 {
   "name": "trans_dim",
   "version": "0.1.0",
-  "homepage": "https://vm44.github.io/colorTables",
+  "homepage": "https://vtlm.github.io/colorTables",
   "private": true,
   "devDependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "gh-pages": "^0.12.0",
-    "react-scripts": "1.0.12"
+    "react-scripts": "1.0.17"
+  },
+"babel": {
+    "stage": 0
   },
   "dependencies": {
     "glamor": "^2.20.40",
@@ -19,6 +23,8 @@
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.7",
     "react-color": "^2.11.1",
+    "react-dnd": "^2.5.4",
+    "react-dnd-html5-backend": "^2.5.4",
     "react-dom": "^15.4.1",
     "react-dropzone": "^3.12.2",
     "react-file-reader-input": "^1.1.0",
