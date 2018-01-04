@@ -107,7 +107,7 @@ class ThreeJS extends Component{
 
             }}>
 
-            {/*<Tree
+            <Tree
               //checkable
               defaultExpandAll
               onSelect={this.onSelect} onCheck={this.onCheck}>
@@ -115,7 +115,7 @@ class ThreeJS extends Component{
                 {this.getMeshes(this.props.currMode, this.props.currModel.children)}
               </TreeNode>
             </Tree>
-*/}
+
           </div>
       		<div style={{
 			color:' #ffffff',

@@ -1,10 +1,11 @@
 color tables:
 start, stop, reset, update
+main table : center content
 ColorDialog beautify
 //ColorDialog rest on Cancel
 //ok-apply
 accs on colors
-ColorDialog onCanel restore
+ColorDialog onCancel restore
 //disable main redraw on colors change
 header
 predef colorsets

@@ -160,7 +160,7 @@ var cAnimAction,cModel,mixer
         if(currState.animation){
           if(cAnimAction)
             cAnimAction.stop()
-
+          console.log("animName",currState.animation.mod, currState.animation.anim.name)
 				  mixer = new THREE.AnimationMixer( currState.animation.mod );
   				cAnimAction = mixer.clipAction( currState.animation.anim.name );
           cAnimAction.play()

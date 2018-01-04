@@ -19,7 +19,7 @@ graphQl,
 3.Ramda.js
 
 
-<a href='https://github.com/vm44/colorTables'>https://github.com/vm44/colorTables</a>
+<a href='https://github.com/vtlm/colorTables'>https://github.com/vtlm/colorTables</a>
 
 Promise, async/await
 

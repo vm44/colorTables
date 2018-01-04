@@ -1,27 +1,34 @@
-import React, {Component} from 'react'
+import React, { Component } from "react";
 // import {connect} from 'react-redux'
-import glamorous from 'glamorous'
+import glamorous from "glamorous";
 
-
-class ScreenLayer extends Component{
-  render(){
-    return(
-      <div style={{height:"100%",
-                  width:"100%",
-                  // pointerEvents:"none",
-                  position:"fixed",
-                backgroundColor: "rgba(0,100,0,0.7)"}}
-            onWheel={(e)=>{console.log(this.props.name,"wheel!",e.deltaY,e.deltaY)}}
-            onMouseMove={(e)=>{console.log(this.props.name,"move!",e.screenX,e.screenY)}}>
+class ScreenLayer extends Component {
+  render() {
+    return (
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          // pointerEvents:"none",
+          position: "fixed",
+          backgroundColor: "rgba(0,100,0,0.7)"
+        }}
+        onWheel={e => {
+          console.log(this.props.name, "wheel!", e.deltaY, e.deltaY);
+        }}
+        onMouseMove={e => {
+          console.log(this.props.name, "move!", e.screenX, e.screenY);
+        }}
+      >
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 
-const DivLow=glamorous.div(props => {
-  console.log('gprops',props)
-  if(props.props.open)
+const DivLow = glamorous.div(props => {
+  console.log("gprops", props);
+  if (props.props.open)
     return {
       // display:"inline-block",
       height: "80vh",
@@ -36,8 +43,8 @@ const DivLow=glamorous.div(props => {
       transition: "0.5s",
       paddingTop: "16px",
       opacity: 1
-
-    }; else
+    };
+  else
     return {
       // display:"inline-block",
       height: "10%",
@@ -52,82 +59,78 @@ const DivLow=glamorous.div(props => {
       transition: "0.5s",
       paddingTop: "16px",
       opacity: 0.51
+    };
+});
 
-    }
-}
-)
+class LeftPanelT extends Component {
+  state = {
+    open: false
+  };
 
-
-class LeftPanelT extends Component{
-
-  state={
-    open:false
-  }
-
-  render(){
-    return(
-      <div style={{
-      height: "80vh",
-      width: "400px",
-      position: "fixed",
-      zIndex: "12",
-      top: "20vh",
-      left: "0",
-      backgroundColor: "#f1f1f1",
-      overflowX: "hidden",
-      overflowY: "scroll",
-      transition: "0.5s",
-      paddingTop: "16px",
-      opacity: 1
-
-    }}>
-      {/*<div style={{position:"relative"}}>
+  render() {
+    return (
+      <div
+        style={{
+          height: "80vh",
+          width: "400px",
+          position: "fixed",
+          zIndex: "12",
+          top: "20vh",
+          left: "0",
+          backgroundColor: "#f1f1f1",
+          overflowX: "hidden",
+          overflowY: "scroll",
+          transition: "0.5s",
+          paddingTop: "16px",
+          opacity: 1
+        }}
+      >
+        {/*<div style={{position:"relative"}}>
         <div style={{position:"absolute",
             border:"1px solid #ff0000",
           width:"50vw"}}>ddd</div>
     </div>*/}
-      {this.props.children}
-
-  </div>
-  )
-//
-//       // {/*<ScreenLayer name={"left"}>*/}
-//         <DivLow props={this.state}
-//           onMouseEnter={()=>{this.setState({open:true})}}
-//           onMouseLeave={()=>{this.setState({open:false})}}>
-//
-//
-//           <div style={{border:"1px solid #ff0000",
-//             width:"50vw"}}>ddd</div>
-//           {this.state.open ? this.props.children : "<<<"}
-//           {/*{this.state.open ?
-//             <div style={{border:"1px solid #ff0000",height:"150vh"}}>
-//               {Array.apply(0, Array(40)).map(function (x, i) {
-//                   return <div key={i}>a</div>;
-//                 })}
-//             </div>
-//             : "<<<"}
-// */}
-//         </DivLow>
-//       // {/*</ScreenLayer>*/}
-//     )
+        {this.props.children}
+      </div>
+    );
+    //
+    //       // {/*<ScreenLayer name={"left"}>*/}
+    //         <DivLow props={this.state}
+    //           onMouseEnter={()=>{this.setState({open:true})}}
+    //           onMouseLeave={()=>{this.setState({open:false})}}>
+    //
+    //
+    //           <div style={{border:"1px solid #ff0000",
+    //             width:"50vw"}}>ddd</div>
+    //           {this.state.open ? this.props.children : "<<<"}
+    //           {/*{this.state.open ?
+    //             <div style={{border:"1px solid #ff0000",height:"150vh"}}>
+    //               {Array.apply(0, Array(40)).map(function (x, i) {
+    //                   return <div key={i}>a</div>;
+    //                 })}
+    //             </div>
+    //             : "<<<"}
+    // */}
+    //         </DivLow>
+    //       // {/*</ScreenLayer>*/}
+    //     )
   }
 }
 
-class LeftPanel extends Component{
+class LeftPanel extends Component {
+  state = {
+    top: "50vh",
+    width: "40px",
+    height: "10vh",
+    opacity: 0.5
+  };
 
-  state={
-    top:"50vh",
-    width:"40px",
-    height:"10vh",
-    opacity:0.5,
-  }
-
-  render(){
-    return(
+  render() {
+    return (
       // {/*<ScreenLayer name={"left"}>*/}
-        <div style={{
-          display:"inline-block",
+      <div
+        style={{
+          display: "inline-block",
           height: this.state.height,
           width: this.state.width,
           position: "fixed",
@@ -136,32 +139,92 @@ class LeftPanel extends Component{
           left: "0",
           backgroundColor: "#f1f1f1",
           // overflowX: "visible",
-          // overflowY: "scroll",
+          overflowY: "scroll",
           transition: "0.5s",
           paddingTop: "16px",
           opacity: this.state.opacity
-
-        }} onMouseEnter={()=>{this.setState({top:"20vh",width:"350px",height:"60%",opacity:1})}}
-          onMouseLeave={()=>{this.setState({top:"50vh",width:"40px",height:"10vh",opacity:0.5})}}>
-
-          {this.state.width != "40px" ? this.props.children : "<<<"}
-
-        </div>
+        }}
+        //onMouseClick={()=>{this.setState({top:"0vh",width:"350px",height:"100%",opacity:1})}}
+        onMouseLeave={() => {
+          this.setState({
+            top: "50vh",
+            width: "40px",
+            height: "10vh",
+            opacity: 0.5
+          });
+        }}
+      >
+        {this.state.width != "40px" ? (
+          <div>
+            {this.props.children}
+            <a
+              href="#"
+              onClick={e => {
+                e.preventDefault();
+                this.setState({
+                  top: "50vh",
+                  width: "40px",
+                  height: "10vh",
+                  opacity: 0.5
+                });
+              }}
+            >
+              <div
+                style={{
+                  // display: "inline-block",
+                  height: "40",
+                  width: "40",
+                  position: "fixed",
+                  zIndex: "13",
+                  top: "0",
+                  left: "0",
+                  color: "#ffffff",
+                  backgroundColor: "#333333",
+                  // overflowX: "visible",
+                  overflowY: "scroll",
+                  transition: "0.5s",
+                  paddingTop: "16px",
+                  opacity: "0.5"
+                }}
+              >
+                X
+              </div>
+            </a>
+          </div>
+        ) : (
+          <a
+            href="#"
+            onClick={e => {
+              e.preventDefault();
+              this.setState({
+                top: "0vh",
+                width: "350px",
+                height: "100%",
+                opacity: 1
+              }); //console.log('href clk!')
+            }}
+          >
+            {/*<div onMouseClick={()=>{this.setState({top:"0vh",width:"350px",height:"100%",opacity:1})}}>*/}
+            cfg
+            {/*</div>*/}
+          </a>
+        )}
+      </div>
       // {/*</ScreenLayer>*/}
-    )
+    );
   }
 }
 
-class LeftPanelPrev extends Component{
+class LeftPanelPrev extends Component {
+  state = {
+    width: "10px"
+  };
 
-  state={
-    width:"10px"
-  }
-
-  render(){
-    return(
+  render() {
+    return (
       // {/*<ScreenLayer name={"left"}>*/}
-        <div style={{
+      <div
+        style={{
           height: "100%",
           width: this.state.width,
           position: "fixed",
@@ -172,29 +235,33 @@ class LeftPanelPrev extends Component{
           overflowX: "hidden",
           transition: "0.5s",
           paddingTop: "16px"
-
-        }} onMouseEnter={()=>{this.setState({width:"150px"})}} onMouseLeave={()=>{this.setState({width:"10px"})}}>
-
-          {this.state.width != "4500px" ? this.props.children : "LEFT"}
-
-        </div>
+        }}
+        onMouseEnter={() => {
+          this.setState({ width: "150px" });
+        }}
+        onMouseLeave={() => {
+          this.setState({ width: "10px" });
+        }}
+      >
+        {this.state.width != "4500px" ? this.props.children : "LEFT"}
+      </div>
       // {/*</ScreenLayer>*/}
-    )
+    );
   }
 }
 
-class TopPanel extends Component{
+class TopPanel extends Component {
+  state = {
+    height: "70px"
+  };
 
-  state={
-    height:"70px"
-  }
-
-  render(){
-    return(
+  render() {
+    return (
       // {/*<ScreenLayer name="top">*/}
-        <div style={{
+      <div
+        style={{
           height: this.state.height,
-          width: '100%',
+          width: "100%",
           position: "fixed",
           zIndex: "10",
           top: "0",
@@ -203,19 +270,23 @@ class TopPanel extends Component{
           overflowX: "hidden",
           transition: "0.5s",
           paddingTop: "6px"
-
-        }} onMouseEnter={()=>{this.setState({height:"70px"})}} onMouseLeave={()=>{this.setState({height:"70px"})}}>
-
-          {this.props.children}
-
-        </div>
+        }}
+        onMouseEnter={() => {
+          this.setState({ height: "70px" });
+        }}
+        onMouseLeave={() => {
+          this.setState({ height: "70px" });
+        }}
+      >
+        {this.props.children}
+      </div>
       // {/*</ScreenLayer>*/}
-    )
+    );
   }
 }
 
 // const VLeftPanel=connect()(LeftPanel)
 // const VTopPanel=connect()(TopPanel)
 
-export {LeftPanel,TopPanel}
+export { LeftPanel, TopPanel };
 // export {VLeftPanel,VTopPanel}

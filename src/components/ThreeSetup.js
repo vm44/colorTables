@@ -22,6 +22,7 @@ const hc1=(name)=>{
 
 
 let menuItems=[
+  'three_Exp_A2',
   // 'Mercure',
 // 'clown_002_014',
 'Desant',
@@ -87,7 +88,7 @@ class ThreeSetup extends Component {
 
   componentDidMount=()=>{
     console.log('didMnt')
-    this.props.dispatch(this.activateModel({name:'T-10M'}))
+    // this.props.dispatch(this.activateModel({name:'T-10M'}))
   }
 
 
