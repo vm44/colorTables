@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import {connect} from 'react-redux'
 import glamorous from "glamorous";
 
+//n/u
 class ScreenLayer extends Component {
   render() {
     return (
@@ -25,6 +26,62 @@ class ScreenLayer extends Component {
     );
   }
 }
+
+const DivClk = glamorous.div({});
+const { A, Div } = glamorous;
+
+const ClickableDiv = ({ cont, val, func }) => {
+  return (
+    <A
+      href="#"
+      onClick={
+        func
+          ? func
+          : () => {
+              console.log("Clickable div");
+            }
+      }
+    >
+      <Div>
+        {cont}
+        {val}
+      </Div>
+    </A>
+  );
+};
+
+const ClickableDivAct = ({ cont, val, func, ptr }) => {
+  return (
+    <A
+      href="#"
+      onClick={
+        func
+          ? func
+          : () => {
+              console.log("Clickable div Act");
+              ptr.setState({ cnt: ptr.state.cnt + 1 });
+            }
+      }
+    >
+      <Div>
+        {cont}
+        {val}
+        {ptr.state.cnt}
+      </Div>
+    </A>
+  );
+};
+
+const PanelContainer = ({ tptr }) => {
+  if (tptr.state.open) return <Div>open</Div>;
+  else return <Div>closed</Div>;
+};
+
+const PanelContainerS = ({ state, props }) => {
+  console.log("stateS", state, props);
+  if (state.open) return <Div>openS,{state.cnt}</Div>;
+  else return <Div>closedS,{state.cnt}</Div>;
+};
 
 const DivLow = glamorous.div(props => {
   console.log("gprops", props);
@@ -51,6 +108,7 @@ const DivLow = glamorous.div(props => {
       width: "40px",
       position: "fixed",
       zIndex: "12",
+
       top: "50vh",
       left: "0",
       backgroundColor: "#41f1f1",
@@ -117,12 +175,39 @@ class LeftPanelT extends Component {
   }
 }
 
+const DivLeftPanel = props => {
+  //  return <Div>{props.open ? "a" : "b"}</Div>;
+  return props.open ? (
+    <Div>o</Div>
+  ) : (
+    <A
+      href="#"
+      onClick={() => {
+        console.log("cls clk");
+      }}
+    >
+      <DivLow props={props}>cccc</DivLow>
+      {/*<Div fontSize={20}>cls</Div>*/}
+    </A>
+  );
+};
+
+class LeftPanelD extends Component {
+  state = {
+    open: false
+  };
+  render() {
+    return <DivLeftPanel props={this.state} />;
+  }
+}
+
 class LeftPanel extends Component {
   state = {
     top: "50vh",
     width: "40px",
     height: "10vh",
-    opacity: 0.5
+    opacity: 0.5,
+    cnt: 0
   };
 
   render() {
@@ -156,6 +241,24 @@ class LeftPanel extends Component {
       >
         {this.state.width != "40px" ? (
           <div>
+            <DivClk
+              onClick={() => {
+                console.log("DIVCll");
+              }}
+            >
+              ddd
+            </DivClk>
+            <ClickableDiv
+              cont="content"
+              val={this.state.cnt}
+              func={() => {
+                console.log("func parm");
+                this.setState({ cnt: this.state.cnt + 1 });
+              }}
+            />
+            <ClickableDivAct cont="content" val={this.state.cnt} ptr={this} />
+            <PanelContainer tptr={this} />
+            <PanelContainerS state={this.state} props={this.props} />
             {this.props.children}
             <a
               href="#"

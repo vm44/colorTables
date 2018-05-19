@@ -1,13 +1,15 @@
-import React, {Component} from 'react'
+import React, { Component } from "react";
 // import {connect} from 'react-redux'
 //
 // import Slider from 'rc-slider'
 // import 'rc-slider/assets/index.css'
 
+import MainMenu from "../components/MainMenu";
 
-import MainMenu from '../components/MainMenu'
-
-import {LeftPanel as VLeftPanel,TopPanel as VTopPanel} from '../components/NavPanels'
+import {
+  LeftPanel as VLeftPanel,
+  TopPanel as VTopPanel
+} from "../components/NavPanels";
 // import '../App.css';
 
 ////////rem
@@ -23,31 +25,22 @@ import {LeftPanel as VLeftPanel,TopPanel as VTopPanel} from '../components/NavPa
 
 //const VSlider=connect(mapStateToProps)(Slider)
 
-class PageLayout extends Component{
+class PageLayout extends Component {
   render = () => {
-    return(//</div> className = 'App'>
-      <div style={{textAlign:'center'}}>
-
-
-        {this.props.leftPanel ?
-          <VLeftPanel>
-            {this.props.leftPanel}
-          </VLeftPanel>
-          :
-          null
-        }
-        <VTopPanel>
-          {this.props.topMenu || <MainMenu />}
-          {/*{this.props.topMenu}*/}
-        </VTopPanel>
+    return (
+      //</div> className = 'App'>
+      <div style={{ textAlign: "center" }}>
+        {this.props.leftPanel ? (
+          <VLeftPanel>{this.props.leftPanel}</VLeftPanel>
+        ) : null}
+        <VTopPanel>{this.props.topMenu || <MainMenu />}</VTopPanel>
         {/*<div style={{height:"100vh"}}>*/}
-          {this.props.children}
+        {this.props.children}
         {/*</div>*/}
-
       </div>
-    )
-  }
+    );
+  };
 }
 
 // export default connect()(PageLayout)
-export default PageLayout
+export default PageLayout;
