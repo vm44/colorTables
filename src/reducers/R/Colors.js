@@ -1,5 +1,5 @@
 import {List,Map} from 'immutable'
-import R from 'ramda'
+import * as R from 'ramda'
 
 import {createColors} from '../../funcs/colors'
 

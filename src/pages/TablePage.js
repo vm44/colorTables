@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 // import VisMainFrame from './components/MainFrame'
 import VisMainFrame from '../containers/VisMainFrame'
 import PageLayout from '../layouts/PageLayout'
-import MainMenu from '../components/MainMenu'
+import MainMenu from '../componentsP/MainMenu'
 import TableSetup from '../components/TableSetup'
 
 class App extends Component {

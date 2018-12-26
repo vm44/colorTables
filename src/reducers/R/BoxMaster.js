@@ -1,4 +1,4 @@
-import R from 'ramda'
+import * as R from 'ramda'
 
 let initSt={
   id:1,

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 import BookView from '../components/BookView'
-import MainMenu from '../components/MainMenu'
+import MainMenu from '../componentsP/MainMenu'
 import PageLayout from '../layouts/PageLayout'
 import BooksCtrl from '../containers/BooksCtrlRamda'
 

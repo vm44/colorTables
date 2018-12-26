@@ -1,4 +1,4 @@
-import R from 'ramda'
+import * as R from 'ramda'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Dimensions from 'react-dimensions'

@@ -4,7 +4,8 @@ import App from './pages/TablePage';
 // // import App from './TblFrame';
 // // import App from './App2';
 import {Provider} from 'react-redux'
-import {IndexRedirect, IndexRoute, Redirect, Router, Route, hashHistory} from 'react-router'
+import {IndexRedirect, IndexRoute, Redirect, Router, Route} from 'react-router'
+import {BrowserRouter, HashRouter} from 'react-router-dom'
 //
 import WebFont from 'webfontloader'
 //
@@ -12,14 +13,14 @@ import AdjustableLayout from './components/AdjustableLayout'
 // import AdjustableLayoutHeap from './components/AdjustableLayoutHeap'
 import AboutMe from './components/AboutMe'
 import AppDropzone from './pages/AppDropzone'
-import BoxConstructCanvas from './components/BoxConstructCanvas'
+//import BoxConstructCanvas from './components/BoxConstructCanvas'
 import BoxMaster from './components/BoxMaster'
 import ColorsMgr from './colors-mgr-R/ColorsMgr'
 import FontSample from './components/FontSample'
 import FlexTable from './components/FlexTable'
 import FullScreen from './components/FullScreen'
 import PageLayout from './layouts/PageLayout'
-import MainMenu from './components/MainMenu'
+import MainMenu from './componentsP/MainMenu'
 import MousePos from './components/MousePos'
 import VBookReader from './containers/VBookReader'
 import TableSetup from './containers/TableSetup'
@@ -27,117 +28,27 @@ import ThreeJS from './components/ThreeJS'
 import ThreeSetup from './components/ThreeSetup'
 import TstDim from './components/TstDim'
 // import Card from './components/TstDnD'
-import TstDimOffEx from './components/TstDimOffExmpl'
+// import TstDimOffEx from './components/TstDimOffExmpl'
 import Page from './components/Page'
-// import BooksCtrl from './containers/BooksCtrl'
-import VideoYT from './components/VideoYT'
+// // import BooksCtrl from './containers/BooksCtrl'
+// import VideoYT from './components/VideoYT'
 import Videos from './content/videos'
+import MainView from './components2/components/MainView'
 import {store} from './store'
  // AIzaSyBZK0tIpg0sOznBoGZmjZaylWqQL9ughRw
 
 
-class App2 extends Component {
-  render() {
-    return (
-      <PageLayout topMenu={<MainMenu/>}>
-        Page 2
-        <div style={{//height:"auto",//"40px",
-          overflow:"visible",
-          border:"1px solid red",
-          display:"block"
-        }}>
-        <TstDim>
-          <TstDim />
-        </TstDim>
-        <TstDim />
-        <TstDim />
-        </div>
-        <FontSample text={"Font Sample русс"} fontFamily={"Tangerine, sans"} />
-        <div style={{height:"100px",
-          // padding:30,
-          border:"1px solid red"
-          // display:"inlineBlock"
-        }}>
-          dgfdg
-          gdfgfd
-        <TstDim />
-        <TstDimOffEx />
-        </div>
-        <FontSample text={"Font Sample"} fontFamily={"Rokkitt, Extra-Bold"} />
-        <FontSample text={"Font Sample"} fontFamily={"Orbitron, Extra-Bold"} />
-        <FontSample text={"Font Sample"} fontFamily={"Play, sans"} />
-        <TstDim />
-      </PageLayout>
-    );
-  }
-}
+ import { createBrowserHistory } from 'history';
 
-class App3 extends Component {
-  render() {
-    return (
-      <div style={{
-          // fontFamily:"Tangerine, sans",
-          // fontSize:"300px",
-          // color:"#05055f",
-          // textShadow:"4px 4px 4px #222222"
-        }}>
-      <PageLayout topMenu={<MainMenu/>}>
-        Page 3
-      </PageLayout>
-    </div>
-    );
-  }
-}
+ const history = createBrowserHistory();
+ 
+ // Get the current location.
+ const location = history.location;
+ console.log('location:',location)
+ 
 
-class App4 extends Component {
-  componentDidMount(){
-    window.addEventListener('scroll', this.handleScroll);
-    // ReactDOM.findDOMNode(this.refs.el).addEventListener('scroll', this.handleScroll);
-    console.log("DidMount")
-    ReactDOM.findDOMNode(this.refs.el).scrollTop=this.props.st;
-    console.log("Mnt",this.refs.el.scrollTop,this.props.st)
-    this.setState({st:50})
-  }
-  componentWillUnmount(){
-    window.removeEventListener('scroll', this.handleScroll);
-    // ReactDOM.findDOMNode(this.refs.el).removeEventListener('scroll', this.handleScroll);
-  }
-  handleScroll=(e)=>{
-    console.log("scrolled",e,this.refs.el.scrollHeight)
-  }
-  componentDidUpdate=()=>{
-    console.log("Upd",this.refs.el.scrollTop,this.refs.el.scrollHeight)
-    ReactDOM.findDOMNode(this.refs.el).scrollTop=this.state.st;
-    console.log("Upd2",this.refs.el.scrollTop,ReactDOM.findDOMNode(this.refs.el).scrollTop)
-  }
-  render() {
-    return (
-      <div style={{
-          // fontFamily:"Tangerine, sans",
-           fontSize:"300px",
-          // color:"#05055f",
-          // textShadow:"4px 4px 4px #222222"
-          // height:"140px",
-          height:"1000px",
-          overflow:"scroll"
-        }}
-          ref="el"
-          onClick={()=>{console.log("click")}}
-          onScroll={()=>{console.log("scroll")}}
-        >
-        <div style={{height:"200%",
-        overflow:"scroll"}}>
-        Page 4<br/>
-        Page 4<br/>
-        Page 4<br/>
-        Page 4<br/>
-        Page 4<br/>
-        Page 4<br/>
-    </div>
-    </div>
-    );
-  }
-}
+// ReactDOM.render(<div>hey</div>,document.getElementById('root'))
+
 
 WebFont.load({
     google: {
@@ -145,62 +56,21 @@ WebFont.load({
     }
   })
 
-class AppT3 extends Component {
-  render() {
-    return (
-      <div style={{
-          // fontFamily:"Tangerine, sans",
-          // fontSize:"300px",
-          // color:"#05055f",
-          // textShadow:"4px 4px 4px #222222"
-        }}>
-        Page T3
-    </div>
-    );
-  }
-}
-
-
-const testFunc=()=>{
-  return(
-  <div>
-    DDDDDDDDDDDDDD<p/>
-    DDDDDDDDDDDDDD
-  </div>
-
-  )
-}
-
-class testComp extends Component{
-  render(){
-    return(
-      <div>
-        testComp
-      </div>
-    )
-  }
-}
-
-const PageV = ({content}) =>
-  // console.log('contenZ',content)
-    // {/*<PageLayout topMenu={topMenu} leftPanel={leftPanel}>*/}
-    <div>
-      {content}
-      </div>
-    // {/*</PageLayout>*/}
-
-    // console.log('entr')
+  //history={HashRouter}
+    console.log('entr')
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>
+    <BrowserRouter >
+    <div>
       <Redirect from="/" exact to="/Models" />
       <Route path='/Main2' component={()=>(<FullScreen> <App /> </FullScreen>)} />
       <Route path='/Main' component={()=>(<Page content={<FullScreen> <FlexTable /> </FullScreen>} topMenu={<MainMenu />} leftPanel={<TableSetup />} />)} />
-      <Route path='/BoxMaster' component={()=>(<Page content={<FullScreen> <BoxMaster /> </FullScreen>} topMenu={<MainMenu />} leftPanel={<TableSetup />} />)} />
+      {/* <Route path='/BoxMaster' component={()=>(<Page content={<FullScreen> <BoxMaster /> </FullScreen>} topMenu={<MainMenu />} leftPanel={<TableSetup />} />)} /> */}
       {/*<Route path='/BoxMaster' component={()=>(<Page content={<BoxMaster />} topMenu={<MainMenu />} leftPanel={<TableSetup />} />)} />*/}
       <Route path='/BoxConstruct' component={()=>(<Page content={<BoxConstructCanvas />} leftPanel={<ThreeSetup />} />)} />
-      <Route path='/2' component={App2} />
+      {/* <Route path='/2' component={App2} /> */}
       <Route path='/MousePos' component={MousePos} />
+      <Route path='/Scene' component={()=>(<Page content={<MainView />} />)} />
       <Route path='/Models' component={()=>(<Page content={<ThreeJS />} leftPanel={<ThreeSetup />} />)} />
       {/*<Route path='/3' component={App3} />*/}
       {/*<Route path='/4' component={()=>(<App4 st={300} />)} />*/}
@@ -217,7 +87,8 @@ ReactDOM.render(
       <Route path='/colorsMgr' component={ColorsMgr} />
       <Route path='/bookReader' component={VBookReader} />
       {/*<Route path='/drz' component={AppDropzone} />*/}
-    </Router>
+      </div>
+    </BrowserRouter>
   </Provider>
 ,
   document.getElementById('root')

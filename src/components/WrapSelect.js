@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Select from 'react-select'
-import 'react-select/dist/react-select.css'
+//import 'react-select/dist/react-select.css'
 
 // import {getCurrentTheme} from '../reducers'
 import {getFromStore} from '../store'

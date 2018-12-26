@@ -4,7 +4,7 @@ import React, { Component } from "react";
 // import Slider from 'rc-slider'
 // import 'rc-slider/assets/index.css'
 
-import MainMenu from "../components/MainMenu";
+import MainMenu from "../componentsP/MainMenu";
 
 import {
   LeftPanel as VLeftPanel,

@@ -1,4 +1,4 @@
-import R from 'ramda'
+import * as R from 'ramda'
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'

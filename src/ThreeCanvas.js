@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import R from 'ramda'
+import * as R from 'ramda'
 // import OrbitControls from 'three-orbit-controls';
 import OrbitControls from './orbit-controls-es6/src';
 // import ColladaLoader from 'three-collada-loader'

@@ -1,4 +1,4 @@
-import R from 'ramda'
+import * as R from 'ramda'
 
 // const arr2obj = R.curry((fn, arr) =>
 //   R.pipe(

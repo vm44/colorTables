@@ -1,4 +1,4 @@
-import R from 'ramda'
+import * as R from 'ramda'
 
 const reducer=(st={items:[]},act)=>{
   switch(act.type){
